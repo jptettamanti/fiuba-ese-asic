@@ -3,25 +3,25 @@ gui_create_pref_key -category {Globals} -key {load_detail_for_funcov} -value_typ
 
 # State setting overrides
 gui_state_default_create -off -ini
-gui_set_state_value -category Globals -key recent_databases -value {{gui_open_db -file /home/lse_dci01/Ejercicios/tp final/rtl/mcu testbench/fsm.vcd -design V1} {gui_open_db -file /home/lse_dci01/Ejercicios/lab1/tb/fsm.vcd -design V1}}
+gui_set_state_value -category Globals -key recent_databases -value {{gui_open_db -file /home/lse_dci01/Ejercicios/tp final/verification/mcu testbench/fsm.vcd -design V1} {gui_open_db -file /home/lse_dci01/Ejercicios/tp final/verification/pc testbench/fsm.vcd -design V1} {gui_open_db -file /home/lse_dci01/Ejercicios/tp final/rtl/mcu testbench/fsm.vcd -design V1} {gui_open_db -file /home/lse_dci01/Ejercicios/lab1/tb/fsm.vcd -design V1}}
 gui_set_state_value -category Layout -key child_console_size_x -value 1359
-gui_set_state_value -category Layout -key child_console_size_y -value 155
-gui_set_state_value -category Layout -key child_data_size_x -value 150
-gui_set_state_value -category Layout -key child_data_size_y -value 427
+gui_set_state_value -category Layout -key child_console_size_y -value 147
+gui_set_state_value -category Layout -key child_data_size_x -value 142
+gui_set_state_value -category Layout -key child_data_size_y -value 435
 gui_set_state_value -category Layout -key child_hier_col3 -value {-1}
 gui_set_state_value -category Layout -key child_hier_colpd -value 0
-gui_set_state_value -category Layout -key child_hier_size_x -value 150
-gui_set_state_value -category Layout -key child_hier_size_y -value 427
+gui_set_state_value -category Layout -key child_hier_size_x -value 142
+gui_set_state_value -category Layout -key child_hier_size_y -value 435
 gui_set_state_value -category Layout -key child_hier_sort_order -value 1
 gui_set_state_value -category Layout -key child_source_docknewline -value false
 gui_set_state_value -category Layout -key child_source_pos_x -value {-2}
 gui_set_state_value -category Layout -key child_source_pos_y -value {-15}
-gui_set_state_value -category Layout -key child_source_size_x -value 1062
-gui_set_state_value -category Layout -key child_source_size_y -value 422
-gui_set_state_value -category Layout -key child_wave_colname -value 186
-gui_set_state_value -category Layout -key child_wave_colvalue -value 186
-gui_set_state_value -category Layout -key child_wave_left -value 376
-gui_set_state_value -category Layout -key child_wave_right -value 918
+gui_set_state_value -category Layout -key child_source_size_x -value 1078
+gui_set_state_value -category Layout -key child_source_size_y -value 430
+gui_set_state_value -category Layout -key child_wave_colname -value 157
+gui_set_state_value -category Layout -key child_wave_colvalue -value 94
+gui_set_state_value -category Layout -key child_wave_left -value 255
+gui_set_state_value -category Layout -key child_wave_right -value 1036
 gui_set_state_value -category Layout -key main_pos_x -value 0
 gui_set_state_value -category Layout -key main_pos_y -value 20
 gui_set_state_value -category Layout -key main_size_x -value 1359
@@ -29,12 +29,12 @@ gui_set_state_value -category Layout -key main_size_y -value 697
 gui_set_state_value -category Layout -key stand_wave_child_docknewline -value false
 gui_set_state_value -category Layout -key stand_wave_child_pos_x -value {-2}
 gui_set_state_value -category Layout -key stand_wave_child_pos_y -value {-15}
-gui_set_state_value -category Layout -key stand_wave_child_size_x -value 1304
-gui_set_state_value -category Layout -key stand_wave_child_size_y -value 544
-gui_set_state_value -category Layout -key stand_wave_top_pos_x -value 3
-gui_set_state_value -category Layout -key stand_wave_top_pos_y -value 43
-gui_set_state_value -category Layout -key stand_wave_top_size_x -value 1302
-gui_set_state_value -category Layout -key stand_wave_top_size_y -value 687
+gui_set_state_value -category Layout -key stand_wave_child_size_x -value 1301
+gui_set_state_value -category Layout -key stand_wave_child_size_y -value 541
+gui_set_state_value -category Layout -key stand_wave_top_pos_x -value 12
+gui_set_state_value -category Layout -key stand_wave_top_pos_y -value 52
+gui_set_state_value -category Layout -key stand_wave_top_size_x -value 1308
+gui_set_state_value -category Layout -key stand_wave_top_size_y -value 693
 gui_create_state_key -category FindDialog -key m_pMatchCase -value_type bool -value false
 gui_create_state_key -category FindDialog -key m_pMatchWord -value_type bool -value false
 gui_create_state_key -category FindDialog -key m_pUseCombo -value_type string -value {}
@@ -42,12 +42,3 @@ gui_create_state_key -category FindDialog -key m_pWrapAround -value_type bool -v
 gui_state_default_create -off
 
 # Begin command logging
-gui_open_db -file {/home/lse_dci01/Ejercicios/tp final/verification/pc testbench/fsm.vcd} -design V1
-gui_list_expand -id  Hier.1   tb_mcu
-gui_list_select -id Hier.1 -current_item_name tb_mcu.pc -current_item_type Scope  -selected  { tb_mcu.pc   }
-gui_list_select -id Data.1 -selected  { tb_mcu.pc.rst   }
-gui_list_select -id Data.1 -selected  { tb_mcu.pc.rst  tb_mcu.pc.clk  tb_mcu.pc.count  tb_mcu.pc.load  {tb_mcu.pc.addr_in[7:0]}   }
-gui_list_select -id Data.1 -selected  { tb_mcu.pc.rst  tb_mcu.pc.clk  tb_mcu.pc.count  tb_mcu.pc.load  {tb_mcu.pc.addr_in[7:0]}  {tb_mcu.pc.addr_out[7:0]}   }
-gui_open_window Wave
-gui_list_add -id Wave.1 -from Data.1 { tb_mcu.pc.rst tb_mcu.pc.clk tb_mcu.pc.count tb_mcu.pc.load {tb_mcu.pc.addr_in[7:0]} {tb_mcu.pc.addr_out[7:0]} } -insertionbar
-gui_close_window -window TopLevel.2

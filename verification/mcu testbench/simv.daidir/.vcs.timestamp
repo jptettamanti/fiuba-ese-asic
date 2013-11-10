@@ -44,7 +44,7 @@ SSH_CLIENT=190.194.243.245 59675 22
 SSH_AUTH_SOCK=/tmp/ssh-i5Xh3kPuCsJQ/agent.10378
 SSH_AGENT_PID=10493
 SNPSLMD_LICENSE_FILE=1717@credenciales.fi.uba.ar:/opt/synopsys/vcs/flexlm//license.dat
-SHELL_SESSION_ID=e7abd06acbf340009490d8fe622255bc
+SHELL_SESSION_ID=7a617d055ba9400096a757f474eaf331
 SESSION_MANAGER=local/ic-server:@/tmp/.ICE-unix/10593,unix/ic-server:/tmp/.ICE-unix/10593
 SCRNAME=vcs
 SCRIPT_NAME=vcs
@@ -58,7 +58,7 @@ NX_XINERAMA_CONF=/home/lse_dci01/.x2go/C-lse_dci01-58-1382295813_stDKDE_dp24/xin
 MGC_LOCATION_MAP=/opt/pdks/adk3_1/location_map.adk
 LC_ALL=C
 KONSOLE_DBUS_SESSION=/Sessions/1
-KONSOLE_DBUS_SERVICE=:1.92
+KONSOLE_DBUS_SERVICE=:1.710
 KDE_SESSION_VERSION=4
 KDE_SESSION_UID=3000
 KDE_MULTIHEAD=false
@@ -75,13 +75,13 @@ ADK_TECH=ami05
 ADK=/opt/pdks/adk3_1
 0
 4
-1382296513 defs.v
-1382296341 regs.v
-1382298195 mcu.v
-1382296589 mcu_tb.v
+1382301128 defs.v
+1382301128 regs.v
+1382301130 mcu.v
+1382301128 mcu_tb.v
 4
 0 
 1369979980 /opt/synopsys/vcs/linux/lib/libvirsim.so
 1369979542 /opt/synopsys/vcs/linux/lib/librterrorinf.so
 1369979502 /opt/synopsys/vcs/linux/lib/libsnpsmalloc.so
-1382298223 simv.daidir
+1382301172 simv.daidir
