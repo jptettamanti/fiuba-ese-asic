@@ -83,8 +83,8 @@ begin
    //$monitor("Clk: %b, Entrada: %b ; Salida: %b", tb_clk, tb_data_in, w_tick);
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hAE}};
-   tb_b_i = {`DATA_WIDTH{8'hAE}};
+   tb_a_i = 8'hAE;
+   tb_b_i = 8'hAE;
    tb_psr[`APSR_CARRY] = 1'b0;
 
    #10;
@@ -104,8 +104,8 @@ begin
 
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hAA}};
-   tb_b_i = {`DATA_WIDTH{8'hAA}};
+   tb_a_i = 8'hAA;
+   tb_b_i = 8'hAA;
    tb_psr[`APSR_CARRY] = 1'b1;
 
    #10;
@@ -125,8 +125,8 @@ begin
 
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hFF}};
-   tb_b_i = {`DATA_WIDTH{8'h01}};
+   tb_a_i = 8'hFF;
+   tb_b_i = 8'h01;
    tb_psr[`APSR_CARRY] = 1'b0;
 
    #10;
@@ -146,8 +146,8 @@ begin
 
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hFF}};
-   tb_b_i = {`DATA_WIDTH{8'hFF}};
+   tb_a_i = 8'hFF;
+   tb_b_i = 8'hFF;
 
    #10;
    tb_operation = `ALU_NAND;
@@ -163,8 +163,8 @@ begin
 
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hFF}};
-   tb_b_i = {`DATA_WIDTH{8'h00}};
+   tb_a_i = 8'hFF;
+   tb_b_i = 8'h00;
 
    #10;
    tb_operation = `ALU_NAND;
@@ -180,8 +180,8 @@ begin
 
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hAA}};
-   tb_b_i = {`DATA_WIDTH{8'hAA}};
+   tb_a_i = 8'hAA;
+   tb_b_i = 8'hAA;
 
    #10;
    tb_operation = `ALU_XOR;
@@ -191,8 +191,8 @@ begin
 
 
    #10;
-   tb_a_i = {`DATA_WIDTH{8'hA7}};
-   tb_b_i = {`DATA_WIDTH{8'h7A}};
+   tb_a_i = 8'hA7;
+   tb_b_i = 8'h7A;
 
    #10;
    tb_operation = `ALU_XOR;

@@ -29,8 +29,8 @@ module dmem_interface
    input  wire           dmem_addr_reg,          /* Data memory address value (register indirect access mode) */
    output wire           dmem_addr    ,          /* Data memory address port value */
 
-   input  wire           mcu_dmem_data,          /* Data value (MCU -> DMEM) */
-   output reg            dmem_mcu_data,          /* Data value (DMEM -> MCU) */
+   input  wire           dmem_data_w  ,          /* Data value (MCU -> DMEM) */
+   output reg            dmem_data_r  ,          /* Data value (DMEM -> MCU) */
    inout  wire           dmem_data    ,          /* Data port value */
 );
 
