@@ -14,15 +14,23 @@
 //-----------------------------------------------------------------
 `define INST_WIDTH                              8
 `define INST_DEPTH                              8
-`define APSR_WIDTH                              3
+
+`define DATA_WIDTH                              8
+`define DATA_DEPTH                              8
+
 `define ALUOP_WIDTH                             4
+
+`define PSR_WIDTH                               3
+`define APSR_WIDTH                              3
 
 //-----------------------------------------------------------------
 // PSR Fields
 //-----------------------------------------------------------------
-`define ZERO                                    2'd0
-`define CARRY                                   2'd1
-`define NEGATIVE                                2'd2
+`define APSR_MIN                                2'd0
+`define APSR_ZERO                               2'd0
+`define APSR_CARRY                              2'd1
+`define APSR_NEG                                2'd2
+`define APSR_MAX                                2'd2
 
 //-----------------------------------------------------------------
 // ALU Operations

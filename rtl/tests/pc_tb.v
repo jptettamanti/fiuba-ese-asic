@@ -27,8 +27,8 @@ reg                      tb_rst     ;      /* Reset signal */
 reg                      tb_clk     ;      /* Clock signal */
 reg                      tb_count   ;      /* Count signal */
 reg                      tb_load    ;      /* New address load signal */
-reg  [(`INST_DEPTH-1):0] tb_addr_in ;      /* New program address - after jump */
-wire [(`INST_DEPTH-1):0] tb_addr_out;      /* Current program address */
+reg  [`INST_DEPTH-1:0]   tb_addr_in ;      /* New program address - after jump */
+wire [`INST_DEPTH-1:0]   tb_addr_out;      /* Current program address */
 
 
 //-----------------------------------------------------------------

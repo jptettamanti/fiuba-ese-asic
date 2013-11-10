@@ -17,19 +17,16 @@
 //-----------------------------------------------------------------
 // Module - ALU
 //-----------------------------------------------------------------
-module alu #
+module alu
 (
-   parameter             N = `DATA_WIDTH   /* Data width */
-)
-(
-   input  wire [3:0]     operation,         /* ALU operation */
+   input  wire [`ALUOP_WIDTH-1:0]  operation,      /* ALU operation */
 
-   input  wire [N-1:0]   a_i      ,         /* First operand */
-   input  wire [N-1:0]   b_i      ,         /* Second operand */
-   input  wire           c_i      ,         /* Carry in */
+   input  wire [`DATA_WIDTH-1:0]   a_i   ,         /* First operand */
+   input  wire [`DATA_WIDTH-1:0]   b_i   ,         /* Second operand */
+   input  wire                     psr   ,         /* Program Status Register */
 
-   output wire [N-1:0]   result_o ,         /* Result */
-   output reg            c_o      ,         /* Carry Out */
+   output reg  [`DATA_WIDTH-1:0]   result,         /* Result */
+   output reg  [`APSR_WIDTH-1:0]   apsr  ,         /* Arithmetic PSR */
 );
 
 //-----------------------------------------------------------------
@@ -41,62 +38,60 @@ always @ (*) begin
    // Arithmetic
    //----------------------------------------------
    `ALU_ADD : begin
-      {c_o, result} = (a_i + b_i);
-      z_o           = (result == {N{1'b0}});
-      n_o           = result_o[N-1];
+      {apsr[`CARRY], result}     = (a_i + b_i);
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
    end
    `ALU_ADDC : begin
-      {c_o, result} = (a_i + b_i) + {{(N-1){1'b0}}, c_i};
-      z_o           = (result == {N{1'b0}});
-      n_o           = result_o[N-1];
+      {apsr[`CARRY], result}     = (a_i + b_i) + {{(`DATA_WIDTH-1){1'b0}}, psr[`CARRY]};
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
    end
    `ALU_SUB : begin
-      result        = (a_i - b_i);
-      z_o           = (result == {N{1'b0}});
-      c_o           = 1'b0;
-      n_o           = result_o[N-1];
+      result                     = (a_i - b_i);
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
+      apsr[`CARRY]               = 1'b0;
    end
    `ALU_SUBC : begin
-      result        = (a_i - b_i) - {{(N-1){1'b0}}, c_i};
-      z_o           = (result == {N{1'b0}});
-      c_o           = 1'b0;
-      n_o           = result_o[N-1];
+      result                     = (a_i - b_i) - {{(`DATA_WIDTH-1){1'b0}}, psr[`CARRY]};
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
+      apsr[`CARRY]               = 1'b0;
    end
    //----------------------------------------------
    // Logical
    //----------------------------------------------
    `ALU_NAND : begin
-      result        = ~(a_i & b_i);
-      z_o           = (result == {N{1'b0}});
-      c_o           = c_i;
-      n_o           = n_i;
+      result                     = ~(a_i & b_i);
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
+      apsr[`CARRY]               = 1'b0;
    end
    `ALU_NOR  : begin
-      result        = ~(a_i | b_i);
-      z_o           = (result == {N{1'b0}});
-      c_o           = c_i;
-      n_o           = n_i;
+      result                     = ~(a_i | b_i);
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
+      apsr[`CARRY]               = 1'b0;
    end
    `ALU_XOR : begin
-      result        = (a_i ^ b_i);
-      z_o           = (result == {N{1'b0}});
-      c_o           = c_i;
-      n_o           = n_i;
+      result                     = (a_i ^ b_i);
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
+      apsr[`CARRY]               = 1'b0;
    end
    `ALU_XNOR : begin
-      result        = ~(a_i ^ b_i);
-      z_o           = (result == {N{1'b0}});
-      c_o           = c_i;
-      n_o           = n_i;
+      result                     = ~(a_i ^ b_i);
+      apsr[`ZERO]                = (result == {`DATA_WIDTH{1'b0}});
+      apsr[`NEG]                 = result[`DATA_WIDTH-1];
+      apsr[`CARRY]               = 1'b0;
    end
    //----------------------------------------------
    // Default
    //----------------------------------------------
    default : begin
-      result        = a_i;
-      z_o           = z_i;
-      c_o           = c_i;
-      n_o           = n_i;
+      result                     = a_i;
+      apsr                       = psr[`APSR_MAX:`APSR_MIN];
    end
    endcase
 end

@@ -23,19 +23,32 @@ module tb_mcu ();
 // Registers / Wires
 //-----------------------------------------------------------------
 
-reg                      tb_rst          ;    /* Reset signal */
-reg                      tb_clk          ;    /* Clock signal */
-reg  [(`INST_WIDTH-1):0] tb_imem_data    ;    /* Program code */
-reg  [(`APSR_WIDTH-1):0] tb_apsr         ;
+// Common Signals
+reg                          tb_rst          ;            /* Reset signal */
+reg                          tb_clk          ;            /* Clock signal */
 
-wire                     tb_ram_write    ;     /* RAM write signal */
-wire                     tb_imm_update   ;     /* RAM address update signal */
-wire                     tb_pc_count     ;     /* PC count signal */
-wire                     tb_pc_load      ;     /* PC load signal */
-wire                     tb_psr_update   ;     /* PSR update flag */
-wire                     tb_opcode_update;     /* OPCODE update disabled */
-wire [`ALUOP_WIDTH:0]    tb_alu_operation;     /* ALU operation selector */
-wire                     tb_acc_update   ;     /* ACC update flag */
+// Shared Signals [MCU - Register]
+wire [`INST_WIDTH-1:0]       tb_opcode       ;            /* Current instruction */
+wire [`APSR_WIDTH-1:0]       tb_psr          ;            /* Program status register */
+
+wire                         tb_psr_update   ;            /* PSR update signal */
+wire                         tb_opcode_update;            /* OPCODE update signal */
+wire                         tb_acc_update   ;            /* ACC update signal */
+wire                         tb_imm_update   ;            /* IMM update signal */
+
+// Non-shared Signals [MCU]
+wire [`ALUOP_WIDTH-1:0]      tb_alu_operation;            /* ALU operation selector */
+
+wire                         tb_pc_count     ;            /* PC count signal */
+wire                         tb_pc_load      ;            /* PC load signal */
+
+wire                         tb_ram_write    ;            /* RAM write signal */
+
+// Non-shared Signals [Register]
+reg  [`DATA_WIDTH-1:0]       tb_alu          ;            /* ALU result */
+reg  [`APSR_WIDTH-1:0]       tb_apsr         ;            /* Arithmetic PSR */
+reg  [`INST_WIDTH-1:0]       tb_imem_data    ;            /* Instruction memory data */
+reg  [`DATA_WIDTH-1:0]       tb_dmem_data    ;            /* Data memory data */
 
 
 //-----------------------------------------------------------------
@@ -47,19 +60,42 @@ mcu
 (
    .rst(tb_rst)                    ,            /* Reset signal */
    .clk(tb_clk)                    ,            /* Clock signal */
-   .imem_data(tb_imem_data)        ,            /* Program code */
-   .apsr(tb_apsr)                  ,            /* Arithmetic PSR */
 
-   .ram_write(tb_ram_write)        ,            /* RAM write signal */
-   .imm_update(tb_imm_update)      ,            /* RAM address update signal */
+   .opcode(tb_opcode)              ,            /* Current instruction */
+   .psr(tb_psr)                    ,            /* Program status register */
+
+   .psr_update(tb_psr_update)      ,            /* PSR update signal */
+   .opcode_update(tb_opcode_update),            /* OPCODE update signal */
+   .acc_update(tb_acc_update)      ,            /* ACC update flag */
+   .imm_update(tb_imm_update)      ,            /* IMM update signal */
+
+   .alu_operation(tb_alu_operation),            /* ALU operation selector */
+
    .pc_count(tb_pc_count)          ,            /* PC count signal */
    .pc_load(tb_pc_load)            ,            /* PC load signal */
-   .psr_update(tb_psr_update)      ,            /* PSR update flag */
-   .opcode_update(tb_opcode_update),            /* OPCODE update disabled */
-   .alu_operation(tb_alu_operation),            /* ALU operation selector */
-   .acc_update(tb_acc_update)                   /* ACC update flag */
+
+   .ram_write(tb_ram_write)                     /* RAM write signal */
 );
 
+// Microprocessor Registers
+regs
+(
+   .rst(tb_rst)                    ,            /* Reset signal */
+   .clk(tb_clk)                    ,            /* Clock signal */
+
+   .psr_update(tb_psr_update)      ,            /* PSR update signal */
+   .opcode_update(tb_opcode_update),            /* OPCODE update signal */
+   .acc_update(tb_acc_update)      ,            /* ACC update signal */
+   .imm_update(tb_imm_update)      ,            /* IMM update signal */
+
+   .alu(tb_alu)                    ,            /* ALU result */
+   .apsr(tb_apsr)                  ,            /* Arithmetic PSR */
+   .imem_data(tb_imem_data)        ,            /* Instruction memory data */
+   .dmem_data(tb_dmem_data)        ,            /* Data memory data */
+
+   .opcode(tb_opcode)              ,            /* Program current instruction */
+   .psr(tb_psr)                                 /* Program status register */
+);
 
 //-----------------------------------------------------------------
 // Initialize tasks
@@ -79,7 +115,6 @@ initial begin
    tb_rst = 1'b1;
    tb_clk = 1'b0;
    tb_imem_data = `MCU_LOAD;
-   tb_apsr = {`APSR_WIDTH{1'b0}};
 end
 
 
