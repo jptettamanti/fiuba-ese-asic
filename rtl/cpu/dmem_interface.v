@@ -54,7 +54,7 @@ always @(posedge clk) begin
    //----------------------------------------------
    /* If write is enabled, assign mcu data to dmem */
    if (dmem_write) begin
-      dmem_data <= mcu_dmem_data;
+      dmem_data <= dmem_data_w;
    end
    /* Else, set port output to high impedance, which alows dmem to mcu data read */
    else begin
@@ -62,7 +62,7 @@ always @(posedge clk) begin
    end
 
    /* Read data afterwards */
-   dmem_mcu_data <= dmem_data;
+   dmem_data_r <= dmem_data;
 end
 
 endmodule
