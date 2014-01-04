@@ -31,20 +31,26 @@ module mcu
    input  wire                         rst          ,            /* Reset signal */
    input  wire                         clk          ,            /* Clock signal */
 
+   output reg                          dmem_update  ,            /* DMEM update signal */
+   output reg                          dmem_write   ,            /* DMEM write signal */
+
+   output reg                          imem_update  ,            /* IMEM update signal */
+
+   output reg                          opcode_update,            /* OPCODE update signal */
    input  wire [`INST_WIDTH-1:0]       opcode       ,            /* Current instruction */
-   input  wire [`APSR_WIDTH-1:0]       psr          ,            /* Program status register */
 
    output reg                          psr_update   ,            /* PSR update signal */
-   output reg                          opcode_update,            /* OPCODE update signal */
-   output reg                          acc_update   ,            /* ACC update signal */
-   output reg                          imm_update   ,            /* IMM update signal */
+   input  wire [`APSR_WIDTH-1:0]       psr          ,            /* Program status register */
+
+   output reg                          res_update   ,            /* Result update signal */
+   output reg  [`RES_COUNT-1:0]        res_sel      ,            /* Result selector */
 
    output reg  [`ALUOP_WIDTH-1:0]      alu_operation,            /* ALU operation selector */
+   output reg  [`REG_COUNT-1:0]        alu_opa_sel  ,            /* ALU First  Operand Selector */
+   output reg  [`REG_COUNT-1:0]        alu_opb_sel  ,            /* ALU Second Operand Selector */
 
    output reg                          pc_count     ,            /* PC count signal */
-   output reg                          pc_load      ,            /* PC load signal */
-
-   output reg                          ram_write                 /* RAM write signal */
+   output reg                          pc_load                   /* PC load signal */
 );
 
 //-----------------------------------------------------------------
@@ -77,26 +83,28 @@ always @(*) begin
       //----------------------------------------------
       // Default control flags values
       //----------------------------------------------
-      ram_write = 1'b0;           /* RAM set to read mode */
-      imm_update = 1'b0;          /* RAM Address update disabled */
+      dmem_write = 1'b0;             /* DMEM set to read mode */
+      dmem_update = 1'b0;            /* DMEM update disabled */
 
-      pc_count = 1'b0;            /* PC disabled */
-      pc_load = 1'b0;             /* PC load disabled */
+      imem_update = 1'b0;            /* IMEM update disabled */
+
+      opcode_update = 1'b0;          /* OPCODE update disabled */
       
-      psr_update = 1'b0;          /* PSR update disabled */
-      opcode_update = 1'b0;       /* OPCODE update disabled */
+      psr_update = 1'b0;             /* PSR update disabled */
 
-      alu_operation = `ALU_NOP;   /* ALU not operate */
+      res_update = 1'b0;             /* ACC update disabled */
+      alu_operation = `ALU_NOP;      /* ALU not operate */
 
-      acc_update = 1'b0;          /* ACC update disabled */
+      pc_count = 1'b0;               /* PC disabled */
+      pc_load = 1'b0;                /* PC load disabled */
 
       //----------------------------------------------
       // Registers to be updated on next cycle
       //----------------------------------------------
-      pc_count = 1'b1;            /* PC enabled */
-      opcode_update = 1'b1;       /* OPCODE update enabled */
+      opcode_update = 1'b1;          /* OPCODE update enabled */
+      pc_count = 1'b1;               /* PC enabled */
 
-       //----------------------------------------------
+      //----------------------------------------------
       // Next state
       //----------------------------------------------
       next_state = `MCU_STATE_FETCH;
@@ -108,23 +116,25 @@ always @(*) begin
       //----------------------------------------------
       // Default control flags values
       //----------------------------------------------
-      ram_write = 1'b0;           /* RAM set to read mode */
-      imm_update = 1'b0;          /* RAM Address update disabled */
+      dmem_write = 1'b0;             /* DMEM set to read mode */
+      dmem_update = 1'b0;            /* DMEM update disabled */
 
-      pc_count = 1'b0;            /* PC disabled */
-      pc_load = 1'b0;             /* PC load disabled */
+      imem_update = 1'b0;            /* IMEM update disabled */
+
+      opcode_update = 1'b0;          /* OPCODE update disabled */
       
-      psr_update = 1'b0;          /* PSR update disabled */
-      opcode_update = 1'b0;       /* OPCODE update disabled */
+      psr_update = 1'b0;             /* PSR update disabled */
 
-      alu_operation = `ALU_NOP;   /* ALU not operate */
+      res_update = 1'b0;             /* ACC update disabled */
+      alu_operation = `ALU_NOP;      /* ALU not operate */
 
-      acc_update = 1'b0;          /* ACC update disabled */
+      pc_count = 1'b0;               /* PC disabled */
+      pc_load = 1'b0;                /* PC load disabled */
 
       //----------------------------------------------
       // Registers to be updated on next cycle
       //----------------------------------------------
-      imm_update = 1'b1;          /* RAM address update enabled */
+      imem_update = 1'b1;            /* IMEM update enabled */
 
       //----------------------------------------------
       // Next state
@@ -138,23 +148,25 @@ always @(*) begin
       //----------------------------------------------
       // Default control flags values
       //----------------------------------------------
-      ram_write = 1'b0;           /* RAM set to read mode */
-      imm_update = 1'b0;          /* RAM Address update disabled */
+      dmem_write = 1'b0;             /* DMEM set to read mode */
+      dmem_update = 1'b0;            /* DMEM update disabled */
 
-      pc_count = 1'b0;            /* PC disabled */
-      pc_load = 1'b0;             /* PC load disabled */
+      imem_update = 1'b0;            /* IMEM update disabled */
+
+      opcode_update = 1'b0;          /* OPCODE update disabled */
       
-      psr_update = 1'b0;          /* PSR update disabled */
-      opcode_update = 1'b0;       /* OPCODE update disabled */
+      psr_update = 1'b0;             /* PSR update disabled */
 
-      alu_operation = `ALU_NOP;   /* ALU not operate */
+      res_update = 1'b0;             /* ACC update disabled */
+      alu_operation = `ALU_NOP;      /* ALU not operate */
 
-      acc_update = 1'b0;          /* ACC update disabled */
+      pc_count = 1'b0;               /* PC disabled */
+      pc_load = 1'b0;                /* PC load disabled */
 
       //----------------------------------------------
       // Registers to be updated on next cycle
       //----------------------------------------------
-      pc_count = 1'b1;            /* PC enabled */
+      pc_count = 1'b1;               /* PC enabled */
 
       //----------------------------------------------
       // Operation specific flag values
@@ -164,33 +176,49 @@ always @(*) begin
       // Default
       //----------------------------------------------
       default : begin
-         ram_write = 1'b0;           /* RAM set to read mode */
-         pc_load = 1'b0;             /* PC load disabled */
+         dmem_write = 1'b0;          /* DMEM set to read mode */
+         psr_update = 1'b1;          /* PSR update enabled */
+         res_update = 1'b0;          /* ACC update disabled */
          alu_operation = `ALU_NOP;   /* ALU not operate */
+         pc_load = 1'b0;             /* PC load disabled */
       end
       //----------------------------------------------
       // Load / Store
       //----------------------------------------------
       `MCU_LOAD : begin
-         ram_write = 1'b0;           /* RAM set to read mode */
+         res_sel       = `RES_DMEM;  /* ACC data comes from DMEM */
+         dmem_write    = 1'b0;       /* DMEM set to read mode */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_STORE : begin
-         ram_write = 1'b1;           /* RAM set to write mode */
+         alu_opa_sel   = `REG_IMEM;  /* DMEM address comes from IMEM */
+         alu_opb_sel   = `REG_ACC;   /* DMEM data comes from ACC */
+         dmem_write    = 1'b1;       /* DMEM set to write mode */
       end
       `MCU_LOADI : begin
-         ram_write = 1'b0;           /* RAM set to read mode */
+         res_sel       = `RES_IMEM;  /* ACC data comes from DMEM */
+         dmem_write    = 1'b0;       /* DMEM set to read mode */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_STOREI : begin
-         ram_write = 1'b1;           /* RAM set to write mode */
+         alu_opa_sel   = `REG_ACC;   /* DMEM address comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* DMEM data comes from IMEM */
+         dmem_write    = 1'b1;       /* DMEM set to write mode */
       end
       //----------------------------------------------
       // Jump
       //----------------------------------------------
       `MCU_JUMP : begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
          pc_load = 1'b1;
       end
       `MCU_JZ : begin
-         if (psr[`APSR_NEG]) begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         if (psr[`APSR_ZERO]) begin
             pc_load = 1'b1;
          end
          else begin
@@ -198,7 +226,10 @@ always @(*) begin
          end
       end
       `MCU_JC : begin
-         if (psr[`APSR_NEG]) begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         if (psr[`APSR_CARRY]) begin
             pc_load = 1'b1;
          end
          else begin
@@ -206,6 +237,9 @@ always @(*) begin
          end
       end
       `MCU_JN : begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
          if (psr[`APSR_NEG]) begin
             pc_load = 1'b1;
          end
@@ -218,86 +252,134 @@ always @(*) begin
       //----------------------------------------------
       `MCU_ADD : begin
          alu_operation = `ALU_ADD;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_ADDC : begin
          alu_operation = `ALU_ADDC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUB : begin
          alu_operation = `ALU_SUB;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUBC : begin
          alu_operation = `ALU_SUBC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_ADDI : begin
          alu_operation = `ALU_ADD;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_ADDCI : begin
          alu_operation = `ALU_ADDC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUBI : begin
          alu_operation = `ALU_SUB;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUBCI : begin
          alu_operation = `ALU_SUBC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       //----------------------------------------------
       // Logical
       //----------------------------------------------
       `MCU_NAND : begin
          alu_operation = `ALU_NAND;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_NOR  : begin
          alu_operation = `ALU_NOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XOR : begin
          alu_operation = `ALU_XOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XNOR : begin
          alu_operation = `ALU_XNOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_NANDI : begin
          alu_operation = `ALU_NAND;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_NORI  : begin
          alu_operation = `ALU_NOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XORI : begin
          alu_operation = `ALU_XOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XNORI : begin
          alu_operation = `ALU_XNOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         acc_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       endcase
 
@@ -313,24 +395,26 @@ always @(*) begin
       //----------------------------------------------
       // Default control flags values
       //----------------------------------------------
-      ram_write = 1'b0;           /* RAM set to read mode */
-      imm_update = 1'b0;          /* RAM Address update disabled */
+      dmem_write = 1'b0;             /* DMEM set to read mode */
+      dmem_update = 1'b0;            /* DMEM update disabled */
 
-      pc_count = 1'b0;            /* PC disabled */
-      pc_load = 1'b0;             /* PC load disabled */
+      imem_update = 1'b0;            /* IMEM update disabled */
+
+      opcode_update = 1'b0;          /* OPCODE update disabled */
       
-      psr_update = 1'b0;          /* PSR update disabled */
-      opcode_update = 1'b0;       /* OPCODE update disabled */
+      psr_update = 1'b0;             /* PSR update disabled */
 
-      alu_operation = `ALU_NOP;   /* ALU not operate */
+      res_update = 1'b0;             /* ACC update disabled */
+      alu_operation = `ALU_NOP;      /* ALU not operate */
 
-      acc_update = 1'b0;          /* ACC update disabled */
+      pc_count = 1'b0;               /* PC disabled */
+      pc_load = 1'b0;                /* PC load disabled */
 
       //----------------------------------------------
       // Registers to be updated on next cycle
       //----------------------------------------------
-      pc_count = 1'b1;            /* PC enabled */
-      opcode_update = 1'b1;       /* OPCODE update enabled */
+      opcode_update = 1'b1;          /* OPCODE update enabled */
+      pc_count = 1'b1;               /* PC enabled */
 
       //----------------------------------------------
       // Next state

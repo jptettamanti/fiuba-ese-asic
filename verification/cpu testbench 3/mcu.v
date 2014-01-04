@@ -186,26 +186,38 @@ always @(*) begin
       // Load / Store
       //----------------------------------------------
       `MCU_LOAD : begin
-         dmem_write = 1'b0;          /* DMEM set to read mode */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_DMEM;  /* ACC data comes from DMEM */
+         dmem_write    = 1'b0;       /* DMEM set to read mode */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_STORE : begin
-         dmem_write = 1'b1;          /* DMEM set to write mode */
+         alu_opa_sel   = `REG_IMEM;  /* DMEM address comes from IMEM */
+         alu_opb_sel   = `REG_ACC;   /* DMEM data comes from ACC */
+         dmem_write    = 1'b1;       /* DMEM set to write mode */
       end
       `MCU_LOADI : begin
-         dmem_write = 1'b0;          /* DMEM set to read mode */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_IMEM;  /* ACC data comes from DMEM */
+         dmem_write    = 1'b0;       /* DMEM set to read mode */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_STOREI : begin
-         dmem_write = 1'b1;          /* DMEM set to write mode */
+         alu_opa_sel   = `REG_ACC;   /* DMEM address comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* DMEM data comes from IMEM */
+         dmem_write    = 1'b1;       /* DMEM set to write mode */
       end
       //----------------------------------------------
       // Jump
       //----------------------------------------------
       `MCU_JUMP : begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
          pc_load = 1'b1;
       end
       `MCU_JZ : begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
          if (psr[`APSR_ZERO]) begin
             pc_load = 1'b1;
          end
@@ -214,6 +226,9 @@ always @(*) begin
          end
       end
       `MCU_JC : begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
          if (psr[`APSR_CARRY]) begin
             pc_load = 1'b1;
          end
@@ -222,6 +237,9 @@ always @(*) begin
          end
       end
       `MCU_JN : begin
+         alu_operation = `ALU_ADD;
+         alu_opa_sel   = `REG_PC;    /* OPA data comes from PC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
          if (psr[`APSR_NEG]) begin
             pc_load = 1'b1;
          end
@@ -234,86 +252,134 @@ always @(*) begin
       //----------------------------------------------
       `MCU_ADD : begin
          alu_operation = `ALU_ADD;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_ADDC : begin
          alu_operation = `ALU_ADDC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUB : begin
          alu_operation = `ALU_SUB;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUBC : begin
          alu_operation = `ALU_SUBC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_ADDI : begin
          alu_operation = `ALU_ADD;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_ADDCI : begin
          alu_operation = `ALU_ADDC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUBI : begin
          alu_operation = `ALU_SUB;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_SUBCI : begin
          alu_operation = `ALU_SUBC;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       //----------------------------------------------
       // Logical
       //----------------------------------------------
       `MCU_NAND : begin
          alu_operation = `ALU_NAND;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_NOR  : begin
          alu_operation = `ALU_NOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XOR : begin
          alu_operation = `ALU_XOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XNOR : begin
          alu_operation = `ALU_XNOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_DMEM;  /* OPB data comes from DMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_NANDI : begin
          alu_operation = `ALU_NAND;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_NORI  : begin
          alu_operation = `ALU_NOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XORI : begin
          alu_operation = `ALU_XOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       `MCU_XNORI : begin
          alu_operation = `ALU_XNOR;
-         psr_update = 1'b1;          /* PSR update enabled */
-         res_update = 1'b1;          /* ACC update enabled */
+         res_sel       = `RES_ALU;   /* ACC data comes from ALU */
+         alu_opa_sel   = `REG_ACC;   /* OPA data comes from ACC */
+         alu_opb_sel   = `REG_IMEM;  /* OPB data comes from IMEM */
+         psr_update    = 1'b1;       /* PSR update enabled */
+         res_update    = 1'b1;       /* ACC update enabled */
       end
       endcase
 

@@ -42,7 +42,9 @@ module regs
    input  wire [`REG_COUNT-1:0]  opa_sel      ,            /* ALU First  Operand Selector */
    input  wire [`REG_COUNT-1:0]  opb_sel      ,            /* ALU Second Operand Selector */
    output reg  [`DATA_WIDTH-1:0] opa          ,            /* ALU First  Operand */
-   output reg  [`DATA_WIDTH-1:0] opb                       /* ALU Second Operand */
+   output reg  [`DATA_WIDTH-1:0] opb          ,            /* ALU Second Operand */
+   
+   input  wire [`INST_DEPTH-1:0] pc                        /* Current program address */
 );
 
 
@@ -126,7 +128,6 @@ always @(posedge clk or posedge rst) begin
       `RES_ALU : begin
          acc <= alu;
       end
-      case (res_sel)
       `RES_DMEM : begin
          acc <= dmem_data;
       end
@@ -136,6 +137,7 @@ always @(posedge clk or posedge rst) begin
       default : begin
          acc <= alu;
       end
+      endcase
    end
    else begin
       acc <= acc;
@@ -162,6 +164,7 @@ always @ (*) begin
    default : begin
       opa = acc;
    end
+   endcase
 end
 
 always @ (*) begin
@@ -181,6 +184,7 @@ always @ (*) begin
    default : begin
       opb = imem;
    end
+   endcase
 end
 
 endmodule

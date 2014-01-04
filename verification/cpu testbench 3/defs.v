@@ -20,8 +20,26 @@
 
 `define ALUOP_WIDTH                             4
 
+`define REG_COUNT                               2
+`define RES_COUNT                               2
+
 `define PSR_WIDTH                               3
 `define APSR_WIDTH                              3
+
+//-----------------------------------------------------------------
+// Source Registers
+//-----------------------------------------------------------------
+`define REG_ACC                                 2'd0
+`define REG_IMEM                                2'd1
+`define REG_DMEM                                2'd2
+`define REG_PC                                  2'd3
+
+//-----------------------------------------------------------------
+// Result Registers
+//-----------------------------------------------------------------
+`define RES_ALU                                 2'd0
+`define RES_DMEM                                2'd1
+`define RES_IMEM                                2'd2
 
 //-----------------------------------------------------------------
 // PSR Fields

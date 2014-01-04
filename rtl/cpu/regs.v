@@ -22,34 +22,38 @@ module regs
    input  wire                   rst          ,            /* Reset signal */
    input  wire                   clk          ,            /* Clock signal */
 
-   input  wire [`INST_WIDTH-1:0] imem_data    ,            /* Data from instruction memory */
+   input  wire                   dmem_update  ,            /* DMEM register update signal */
+   input  wire [`DATA_WIDTH-1:0] dmem_data    ,            /* DMEM data */
+
+   input  wire                   imem_update  ,            /* IMEM register update signal */
+   input  wire [`INST_WIDTH-1:0] imem_data    ,            /* IMEM data */
 
    input  wire                   opcode_update,            /* OPCODE update signal */
    output reg  [`INST_WIDTH-1:0] opcode       ,            /* Current instruction */
-
-   input  wire                   imm_update   ,            /* IMM update signal */
 
    input  wire                   psr_update   ,            /* PSR update signal */
    input  wire [`APSR_WIDTH-1:0] apsr         ,            /* Arithmetic PSR */
    output reg  [`PSR_WIDTH-1:0]  psr          ,            /* Program status register */
 
-   input  wire                   acc_update   ,            /* ACC update signal */   
-   input  wire [`DATA_WIDTH-1:0] alu          ,            /* ALU result */
-   output wire [`DATA_WIDTH-1:0] opa          ,            /* ALU First Operand - ACC*/
-   output wire [`DATA_WIDTH-1:0] opb          ,            /* ALU Second Operand - IMM/DMEM */
+   input  wire                   res_update   ,            /* Result update signal */
+   input  wire [`RES_COUNT-1:0]  res_sel      ,            /* Result selector */
 
-   input  wire [`DATA_WIDTH-1:0] dmem_data_r  ,            /* Data from data memory */
-   output wire [`DATA_WIDTH-1:0] dmem_data_w  ,            /* Data to data memory */
-   output wire [`DATA_DEPTH-1:0] dmem_addr_reg             /* Data memory address value (register indirect access mode) */
+   input  wire [`DATA_WIDTH-1:0] alu          ,            /* ALU result */
+   input  wire [`REG_COUNT-1:0]  opa_sel      ,            /* ALU First  Operand Selector */
+   input  wire [`REG_COUNT-1:0]  opb_sel      ,            /* ALU Second Operand Selector */
+   output reg  [`DATA_WIDTH-1:0] opa          ,            /* ALU First  Operand */
+   output reg  [`DATA_WIDTH-1:0] opb          ,            /* ALU Second Operand */
+   
+   input  wire [`INST_DEPTH-1:0] pc                        /* Current program address */
 );
 
 
 //-----------------------------------------------------------------
 // Registers
 //-----------------------------------------------------------------
-
 reg  [`DATA_WIDTH-1:0] acc;
-reg  [`INST_WIDTH-1:0] imm;
+reg  [`DATA_WIDTH-1:0] dmem;
+reg  [`INST_WIDTH-1:0] imem;
 
 
 //-----------------------------------------------------------------
@@ -83,14 +87,57 @@ always @(posedge clk or posedge rst) begin
 end
 
 //-----------------------------------------------------------------
+// Immediate value update
+//-----------------------------------------------------------------
+always @(posedge clk or posedge rst) begin
+   if (rst) begin
+      imem <= {`INST_WIDTH{1'b0}};
+   end
+   else if (imem_update) begin
+      imem <= imem_data;
+   end
+   else begin
+      imem <= imem;
+   end
+end
+
+//-----------------------------------------------------------------
+// RAM value update
+//-----------------------------------------------------------------
+always @(posedge clk or posedge rst) begin
+   if (rst) begin
+      dmem <= {`DATA_WIDTH{1'b0}};
+   end
+   else if (dmem_update) begin
+      dmem <= dmem_data;
+   end
+   else begin
+      dmem <= dmem;
+   end
+end
+
+//-----------------------------------------------------------------
 // Accumulator update
 //-----------------------------------------------------------------
 always @(posedge clk or posedge rst) begin
    if (rst) begin
       acc <= {`DATA_WIDTH{1'b0}};
    end
-   else if (acc_update) begin
-      acc <= alu;
+   else if (res_update) begin
+      case (res_sel)
+      `RES_ALU : begin
+         acc <= alu;
+      end
+      `RES_DMEM : begin
+         acc <= dmem_data;
+      end
+      `RES_IMEM : begin
+         acc <= imem_data;
+      end
+      default : begin
+         acc <= alu;
+      end
+      endcase
    end
    else begin
       acc <= acc;
@@ -98,26 +145,46 @@ always @(posedge clk or posedge rst) begin
 end
 
 //-----------------------------------------------------------------
-// Immediate value update
-//-----------------------------------------------------------------
-always @(posedge clk or posedge rst) begin
-   if (rst) begin
-      imm <= {`INST_WIDTH{1'b0}};
-   end
-   else if (imm_update) begin
-      imm <= imem_data;
-   end
-   else begin
-      imm <= imm;
-   end
-end
-
-//-----------------------------------------------------------------
 // Output wire assign
 //-----------------------------------------------------------------
-assign opa = acc;
-assign opb = imm;
-assign dmem_data_w = acc;
-assign dmem_addr_reg = acc;
+always @ (*) begin
+   case (opa_sel)
+   `REG_ACC : begin
+      opa = acc;
+   end
+   `REG_IMEM : begin
+      opa = imem;
+   end
+   `REG_DMEM : begin
+      opa = dmem;
+   end
+   `REG_PC : begin
+      opa = pc;
+   end
+   default : begin
+      opa = acc;
+   end
+   endcase
+end
+
+always @ (*) begin
+   case (opb_sel)
+   `REG_ACC : begin
+      opb = acc;
+   end
+   `REG_IMEM : begin
+      opb = imem;
+   end
+   `REG_DMEM : begin
+      opb = dmem;
+   end
+   `REG_PC : begin
+      opb = pc;
+   end
+   default : begin
+      opb = imem;
+   end
+   endcase
+end
 
 endmodule

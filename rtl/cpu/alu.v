@@ -23,7 +23,7 @@ module alu
 
    input  wire [`DATA_WIDTH-1:0]   a_i      ,         /* First operand */
    input  wire [`DATA_WIDTH-1:0]   b_i      ,         /* Second operand */
-   input  wire                     psr      ,         /* Program Status Register */
+   input  wire [`PSR_WIDTH-1:0]    psr      ,         /* Program Status Register */
 
    output reg  [`DATA_WIDTH-1:0]   result   ,         /* Result */
    output reg  [`APSR_WIDTH-1:0]   apsr               /* Arithmetic PSR */
