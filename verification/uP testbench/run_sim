@@ -6,10 +6,10 @@ if [ -f ./waves/tb_run ]; then
 fi
 
 iverilog \
-   -I ../rtl/ \
+   -I ./rtl/ \
    -g2001 \
    -o ./waves/tb_run \
-   ../rtl/*.v ./*.v
+   ./rtl/*.v ./*.v
 
 if [ -f ./waves/tb_run ]; then
    vvp ./waves/tb_run
