@@ -1,0 +1,5 @@
+cd Ejercicios/tp\ final/work/syn/
+dc_shell -f ../../backend/scripts/syn/dcshell_syn.tcl 
+cd
+
+cat Ejercicios/tp\ final/backend/dgen/syn/reports/cpu_syn_timing.txt | grep slack

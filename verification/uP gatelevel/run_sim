@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo ""
+if [ -f ./waves/tb_run ]; then
+   rm ./waves/tb_run
+fi
+
+iverilog \
+   -I /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/verilog/ \
+   -I ./rtl/ \
+   -g2001 \
+   -o ./waves/tb_run \
+   /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/verilog/saed90nm_pwr.v \
+   ./rtl/*.v
+
+if [ -f ./waves/tb_run ]; then
+   vvp ./waves/tb_run
+fi
+echo ""

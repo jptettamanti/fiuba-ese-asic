@@ -98,7 +98,7 @@ module ram_memory #(
    // Timing paths
    specify
       specparam ACCESS_TIME = 8.9;
-      (address,data_in_wr_ena *> data_out) = ACCESS_TIME;
+      (address,wr_ena *> data_out) = ACCESS_TIME;
    endspecify
 // *****************************************************************************
 endmodule

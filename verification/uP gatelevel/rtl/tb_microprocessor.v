@@ -43,6 +43,8 @@
 // -----------------------------------------------------------------------
 
 module tb_microprocessor ();
+   supply1 vdd ;
+   supply0 gnd ;
 
    // --------------------------------------------------------------------
    // Testbench signals
@@ -60,19 +62,16 @@ module tb_microprocessor ();
    // --------------------------------------------------------------------
    // Device under verification (DUV)
    // --------------------------------------------------------------------
-   micro duv (
-      .clk          (tb_clk),
-      .rst          (tb_rst),
-      .sclk         (1'b0),
-      .sen          (1'b0),
-      .sdi          (1'b0),
-      .smode        (1'b0),
-      .rom_data     (tb_rom_word),
-      .ram_data     (tb_ram_word),
-      .rom_addr     (tb_rom_addr),
-      .ram_addr     (tb_ram_addr),
-      .ram_wr_en    (tb_ram_write_ena),
-      .sdo          ()
+   cpu duv (
+      .rst                (tb_rst),
+      .clk                (tb_clk),
+      .imem_data          (tb_rom_word),
+      .imem_addr          (tb_rom_addr),
+      .dmem_port_value    (tb_ram_word),
+      .dmem_port_addr     (tb_ram_addr),
+      .dmem_port_write    (tb_ram_write_ena),
+      .vdd                (tb_vdd),
+      .gnd                (tb_gnd)
    );
    assign tb_ram_word = (~tb_ram_write_ena)? tb_ram_word_read : {8{1'bz}};
    // --------------------------------------------------------------------

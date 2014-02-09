@@ -1,0 +1,11 @@
+cd Ejercicios/tp\ final/verification/cpu\ testbench\ 3/
+vcs cpu_tb_3.v alu.v defs.v mcu.v pc.v ram_port.v regs.v 
+./simv
+dve
+cd ../../../../ 
+
+vcs tb_microprocessor.v alu.v cpu.v defs.v mcu.v pc.v ram_memory.v ram_port.v regs.v rom_memory.v 
+./run_sim
+cd ../../../../ 
+
+vcs -full64 -notice +lint=all,noVCDE,noTFIPC,noIWU,noOUDPE +v2k -timescale=1ns/1ps +define+CLOCK_PERIOD=10 -debug +neg_tchk tb_microprocessor.v ram_memory.v rom_memory.v cpu.v /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/verilog/saed90nm_pwr.v

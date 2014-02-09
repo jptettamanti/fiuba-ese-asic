@@ -1,0 +1,5 @@
+cd Ejercicios/tp\ final/work/pnr/
+icc_shell -f ../../backend/scripts/pnr/icc.tcl 
+cd 
+  
+cat Ejercicios/tp\ final/backend/dgen/pnr/reports/cpu_pnr_timing.txt | grep slack
