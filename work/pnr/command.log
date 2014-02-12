@@ -1,0 +1,345 @@
+#@ # 
+#@ # Running icc_shell Version H-2013.03-ICC-SP2 for amd64 -- May 28, 2013
+#@ # Date:   Mon Feb  3 15:26:14 2014
+#@ # Run by: lse_dci0@ic-server
+#@ 
+
+source -echo -verbose {/home/lse_dci01/Ejercicios/tp final/work/pnr/../../backend/scripts/pnr/icc.tcl}
+#@ # -- Starting source /home/lse_dci01/Ejercicios/tp final/work/pnr/../../backend/scripts/pnr/icc.tcl
+
+#@ ####################################################################################################################################
+#@ # Institución:                          Facultad de Ingeniería - Universidad de Buenos Aires
+#@ #
+#@ # Herramienta:        IC Compiler Version E-2010.12-ICC-SP3 for linux -- Apr 13, 2011
+#@ #
+#@ # Fecha de creación:  29 Noviembre 2012
+#@ #
+#@ ####################################################################################################################################
+#@ #source ../../backend/scripts/pnr/icc.tcl
+#@ source ../../backend/scripts/common/global_vars.tcl
+#@ # -- Starting source ../../backend/scripts/common/global_vars.tcl
+
+#@ set PROJ_DIR            ../..
+#@ set SAED_PATH           /opt/pdks/SAED_EDK90nm
+#@ 
+#@ # All verilog files, separated by spaces
+#@ set verilog_files_list  [list	cpu/alu.v			cpu/cpu.v 			cpu/defs.v 			cpu/mcu.v 			cpu/pc.v			cpu/ram_port.v			cpu/regs.v			]
+#@ 
+#@ # Top-level Module
+#@ set my_toplevel         cpu
+#@ # -- End source ../../backend/scripts/common/global_vars.tcl
+
+#@ 
+#@ set techfile    "$SAED_PATH/Technology_Kit/techfile/saed90nm_1p9m.tf"
+#@ set ref_lib     "$SAED_PATH/Digital_Standard_cell_Library/process/astro/fram/saed90nm"
+#@ set lib_name    "$PROJ_DIR/backend/dgen/pnr/mw_orca_lib"
+#@ set tlupmax     "$SAED_PATH/Digital_Standard_cell_Library/process/star_rcxt/tluplus/saed90nm_1p9m_1t_Cmax.tluplus"
+#@ set tlupmin     "$SAED_PATH/Digital_Standard_cell_Library/process/star_rcxt/tluplus/saed90nm_1p9m_1t_Cmin.tluplus"
+#@ set tech2itf    "$SAED_PATH/Digital_Standard_cell_Library/process/star_rcxt/saed90nm.map"
+#@ 
+#@ #------------------------------------------
+#@ #  Library Setup
+#@ #------------------------------------------
+#@ set_app_var search_path         "$search_path $PROJ_DIR/rtl $SAED_PATH/Digital_Standard_cell_Library/synopsys/models $SAED_PATH/Digital_Standard_cell_Library/synopsys/icons"
+#@ set_app_var target_library      "saed90nm_max.db"
+#@ set_app_var synthetic_library   dw_foundation.sldb
+#@ set_app_var link_library        [concat "* saed90nm_max.db saed90nm_min.db saed90nm_typ.db" $target_library $synthetic_library]
+#@ 
+#@ 
+#@ # If a Milkyway library does not already exist for your design, you need to create one and open it.
+#@ # If you already have a Milkyway design library, you must open it before working on your design.
+#@ 
+#@ # Borrar la biblioteca creada anteriormente
+#@ sh rm -rf $lib_name
+#@ 
+#@ # Crearla nuevamente vacia
+#@ create_mw_lib  -technology $techfile  -mw_reference_library $ref_lib $lib_name
+#@ 
+#@ set_tlu_plus_files         -max_tluplus $tlupmax           -min_tluplus $tlupmin           -tech2itf_map  $tech2itf
+#@ 
+#@ open_mw_lib $lib_name
+#@ 
+#@ import_designs  -format ddc  -top $my_toplevel  -cel $my_toplevel "$PROJ_DIR/backend/dgen/syn/designs/${my_toplevel}_syn_mapped.ddc"
+#@ 
+#@ # Cargar las constraints generadas por el sintetizador
+#@ read_sdc "$PROJ_DIR/backend/dgen/syn/cons/${my_toplevel}_syn.sdc"
+#@ # -- Starting source /opt/synopsys/icc/auxx/syn/all_command_option_def.tcl
+
+#@ define_proc_attributes all_physical_only_cells -info "Get the collection of physical only cells" -define_args {
+#@ { -coordinates "coordinates of bounding box" "llx lly urx ury" string {optional}} 
+#@ { -lib_cells "get cells related to these objects" "objects" list {optional}} 
+#@ { -cell_name "list of cell name patterns and collections" "patterns" list {optional}} 
+#@ { "" "Existing collection" "arguments" list {optional}} 
+#@ }
+#@ define_proc_attributes all_physical_only_nets  -info "Get the collection of physical only nets" -define_args {
+#@ { "" "list of cell name patterns and collections" "arguments" list {optional}} 
+#@ } 
+#@ define_proc_attributes all_drc_violated_nets -info "Returns all DRC violated nets" -define_args { 
+#@ { -max_capacitance "max Cap DRC violated nets" "" string {optional}} 
+#@ { -max_transition "max transition time DRC violated nets" "" string {optional}} 
+#@ { -max_fanout "max fanout DRC violated nets" "" string {optional}}
+#@ { -threshold "Captures all values more than or equal to threshold" "threshold" string {optional}} 
+#@ { -bound "Captures all values less than or equal to bound bound" "upper" string {optional}} 
+#@ { "" "objects patterns OR collection" "arguments"  list {optional}} 
+#@ }
+#@ define_proc_attributes all_fanin -info "return pins or cells in transitive fanin" -define_args { 
+#@ { -to "set of sink ports, pins, or nets" "sink_list" list {optional}} 
+#@ { -startpoints_only  "return only the timing startpoints" "" string {optional}} 
+#@ { -exclude_bboxes "black-boxes are not included in return-set" "" string {optional}} 
+#@ { -break_on_bboxes  "traversal stops at black-boxes" "" string {optional}} 
+#@ { -only_cells "only cells are included in the return-set" "" string {optional}} 
+#@ { -flat "trace entire design instead of just current hierarchy" "" string {optional}} 
+#@ { -levels "maximum number of levels of logic to traverse" "n" string {optional}} 
+#@ { -trace_arcs "Type of network arcs to trace. Values: timing, all" "arc_type" string {optional}}
+#@ }
+#@ define_proc_attributes all_high_fanout -info "Returns all high fanout objects" -define_args { 
+#@ { -nets "high fanout nets" "" string {optional}} 
+#@ { -threshold "high fanout threshold: value>=0" "threshold" string {optional}} 
+#@ { -through_buf_inv "treat buffers and inverters as transparent -check for transitive fanout" "" string {optional}} 
+#@ { "" "objects patterns OR collection" "arguments" string {optional}} 
+#@ }
+#@ define_proc_attributes all_ideal_nets -info "Returns all ideal nets" -define_args { 
+#@ { "" "objects patterns OR collection" "arguments" string {optional}} 
+#@ }
+#@ define_proc_attributes all_inputs -info "return input ports" -define_args { 
+#@ { -clock "ports with input delay relative to clock" "clock" string {optional}} 
+#@ { -edge_triggered "ports with non-level-sensitive input delay" "" string {optional}} 
+#@ { -level_sensitive "ports with level-sensitive input delay" "" string {optional}} 
+#@ }
+#@ define_proc_attributes all_outputs -info "return output ports" -define_args { 
+#@ { -clock "ports with output delay relative to clock" "clock" string {optional}} 
+#@ { -edge_triggered "ports with non-level-sensitive output delay" "" string {optional}} 
+#@ { -level_sensitive "ports with level-sensitive output delay" "" string {optional}} 
+#@ }
+#@ define_proc_attributes all_threestate -info "Returns all threestate objects" -define_args { 
+#@ { -nets "threestate nets" "" string {optional}} 
+#@ { "" "objects patterns OR collection" "arguments" string {optional}} 
+#@ }
+#@ define_proc_attributes all_dont_touch -info "Returns all dont touch objects" -define_args { 
+#@ { -nets "Dont touch nets" "" string {optional}} 
+#@ { -cells "Dont touch cells" "" string {optional}} 
+#@ { "" "Dont touch patterns OR collections" "patterns" string {optional}} 
+#@ }
+#@ define_proc_attributes all_size_only_cells -info "Returns all size_only cells" -define_args { 
+#@ { "" "Object patterns OD collections" "patterns" string {optional}} 
+#@ }
+#@ define_proc_attributes all_clocks -info "return all clocks in the current design"  
+#@ define_proc_attributes all_designs -info "return all designs" 
+#@ define_proc_attributes all_registers  -info "create a collection of register cells or pins" -define_args { 
+#@ { -no_hierarchy "only search the top level of hierarchy" "" string {optional}} 
+#@ {-rise_clock "return registers triggered by rise edge of this clock" "rise_clock" string {optional}}
+#@ {-fall_clock "return registers triggered by rise edge of this clock" "fall_clock" string {optional}}
+#@ { -clock "return registers of this clock" "clock" string {optional}} 
+#@ { -cells "return cells - this is the default" "" string {optional}} 
+#@ { -data_pins "return data_pins" "" string {optional}} 
+#@ { -clock_pins "return clock_pins" "" string {optional}} 
+#@ { -slave_clock_pins "return slave_clock_pin" "" string {optional}} 
+#@ { -inverted_output "return FF's with inverted output phase" "" string {optional}} 
+#@ { -output_pins "return output_pins" "" string {optional}} 
+#@ { -level_sensitive "only consider level sensitive registers" "" string {optional}} 
+#@ { -edge_triggered "only consider edge triggered register" "" string {optional}} 
+#@ { -master_slave "only consider master/slave registers" "" string {optional}} 
+#@ }
+#@ define_proc_attributes all_critical_cells -info "return critical cells" -define_args { 
+#@ { -slack_range "critical range to select cells:value>=0" "range_value" string {optional}} 
+#@ }
+#@ define_proc_attributes all_critical_pins -info "return critical pins" -define_args { 
+#@ { -slack_range "critical range to select cells:value>=0" "range_value" string {optional}} 
+#@ { -type "pintype: Values: endpoint, startpoint" "pin_type" string {optional}} 
+#@ }
+#@ define_proc_attributes get_magnet_cells -info "return magnet cells collection" -define_args {
+#@ { -stop_by_sequential_cells "don't pull sequential cells" "" string {optional}} 
+#@ { -exclude_buffers "skip through buffers in levels" "" string {optional}} 
+#@ { -exclude_cells "list of excluded cells list" "" string {optional}}
+#@ { -logical_level "number of logical levels to pull for placement" "integer" string {optional}} 
+#@ { -stop_points "list of stop points where to stop magnetizing paths" "object_list" list {optional}} 
+#@ { "" "a list of magnet objects" "magnet_objects" list {optional}} 
+#@ }
+#@ define_proc_attributes all_fanout -info "return pins or cells in transitive fanout" -define_args {
+#@ {-clock_tree "return all clock tree components in design" "" string {optional}}
+#@ {-from "set of source ports, pins, or nets" "source_list" list {optional}}
+#@ {-endpoints_only "return only the timing endpoints" "" string {optional}}
+#@ {-exclude_bboxes "black-boxes are not included in return-set" "" string {optional}}
+#@ {-break_on_bboxes "traversal stops at black-boxes" "" string {optional}}
+#@ {-only_cells "only cells are included in the return-set" "" string {optional}}
+#@ {-flat "trace entire design instead of just current hierarchy" "" string {optional}}
+#@ {-levels "maximum number of levels of logic to traverse" "n" string {optional}}
+#@ {-trace_arcs "Type of network arcs to trace. Values: timing, all" "arc_type" string {optional}}
+#@ }
+#@ define_proc_attributes all_physical_only_ports -info " Get the collection of physical only ports" -define_args {
+#@ {"" "list of cell name patterns and collections" "arguments" list {optional}}
+#@ }
+#@ define_proc_attributes get_matching_nets_for_pattern -info "Get matched nets for a certain net pattern" -define_args { 
+#@ { -pattern "pattern id" "integer" string {optional}} 
+#@ { -optimizable "Return all nets that can be optimized" "" string {optional}} 
+#@ { -transition_lower_limit "nets with transition equal or greater than lower limit" "lower_limit" string {optional}} 
+#@ { -transition_upper_limit "nets with transition less than upper limit" "upper_limit" string {optional}} 
+#@ { -setup_slack_lower_limit "nets with slack equal or greater than lower limit" "lower_limit" string {optional}} 
+#@ { -setup_slack_upper_limit "nets with slack less than upper limit" "upper_limit" string {optional}} 
+#@ { -hold_slack_lower_limit "nets with hold slack equal or greater than lower limit" "lower_limit" string {optional}} 
+#@ { -hold_slack_upper_limit "nets with hold slack less than upper limit" "upper_limit" string {optional}} 
+#@ }
+#@ # -- End source /opt/synopsys/icc/auxx/syn/all_command_option_def.tcl
+
+#@ 
+#@ save_mw_cel  -design "${my_toplevel}.CEL;1"
+#@ 
+#@ close_mw_cel
+#@ 
+#@ close_mw_lib
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # FLOORPLANNING
+#@ #------------------------------------------
+#@ 
+#@ open_mw_lib $lib_name
+#@ 
+#@ copy_mw_cel             -from_library $lib_name         -from $my_toplevel         -to_library $lib_name         -to "${my_toplevel}_floorplan"
+#@ 
+#@ set ::auto_restore_mw_cel_lib_setup false
+#@ open_mw_cel  "${my_toplevel}_floorplan"
+#@ current_mw_cel "${my_toplevel}_floorplan"
+#@ 
+#@ create_floorplan -core_utilization 0.85 -core_aspect_ratio 0.4 -left_io2core 7 -bottom_io2core 7 -right_io2core 7 -top_io2core 7
+#@ 
+#@ # Save the floorplan
+#@ save_mw_cel -as "${my_toplevel}_floorplan"
+#@ 
+#@ #------------------------------------------
+#@ # POWER PLANNING
+#@ #------------------------------------------
+#@ 
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd} -create_ports top
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd} -tie
+#@ 
+#@ create_rectangular_rings -nets {gnd vdd} -left_segment_layer M4 -left_segment_width 0.9 -right_segment_layer M4 -right_segment_width 0.9 -bottom_segment_layer M5 -bottom_segment_width 0.9 -top_segment_layer M5 -top_segment_width 0.9
+#@ 
+#@ # Save the design
+#@ save_mw_cel -as "${my_toplevel}_power"
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # PLACEMENT
+#@ #------------------------------------------
+#@ check_physical_design -stage pre_place_opt
+#@ source -encrypted /opt/synopsys/icc/auxx/syn/psyn/analyze_physical_design.tcl.e
+
+#@ analyze_physical_design_internal {pre_place_opt} {} 0 0 {} {} {0}
+
+#@ 
+#@ if {[place_opt -area_recovery] == 0} {
+#@         echo "Placement Error"
+#@         #exit; # Exits ICC if a serious linking problem is encontered
+#@ }
+#@ 
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd}
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd} -tie
+#@ 
+#@ 
+#@ #Analyze congestion after placement
+#@ report_congestion
+#@ 
+#@ preroute_standard_cells -connect horizontal  -port_filter_mode off -cell_master_filter_mode off -cell_instance_filter_mode off -voltage_area_filter_mode off -route_type {P/G Std. Cell Pin Conn}
+#@ #------------------------------------------
+#@ 
+#@ # Save placement
+#@ save_mw_cel -as "${my_toplevel}_placed"
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # CTS
+#@ #------------------------------------------
+#@ check_physical_design -stage pre_clock_opt
+#@ source -encrypted /opt/synopsys/icc/auxx/syn/psyn/analyze_physical_design.tcl.e
+
+#@ analyze_physical_design_internal {pre_clock_opt} {} 0 0 {} {} {0}
+
+#@ 
+#@ clock_opt -area_recovery
+#@ 
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd}
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd} -tie
+#@ 
+#@ # Save post-CTS
+#@ save_mw_cel -as "${my_toplevel}_postCTS"
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # ROUTING
+#@ #------------------------------------------
+#@ check_physical_design -stage pre_route_opt
+#@ source -encrypted /opt/synopsys/icc/auxx/syn/psyn/analyze_physical_design.tcl.e
+
+#@ analyze_physical_design_internal {pre_route_opt} {} 0 0 {} {} {0}
+
+#@ 
+#@ route_opt -area_recovery
+#@ 
+#@ # Save the routing
+#@ save_mw_cel -as "${my_toplevel}_routed"
+#@ 
+#@ # Add Stdcell fillers
+#@ insert_stdcell_filler -cell_with_metal {SHFILL1} -connect_to_power vdd -connect_to_ground gnd
+#@ 
+#@ 
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd}
+#@ derive_pg_connection -power_net {vdd} -ground_net {gnd} -tie
+#@ 
+#@ 
+#@ if {[verify_lvs -ignore_floating_port] == 0} {
+#@         echo "LVS error"
+#@         exit; # Exits ICC if a serious linking problem is encontered
+#@ }
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # POST-ROUTE OPTIMIZATIONS
+#@ #------------------------------------------
+#@ insert_zrt_redundant_vias
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # REPORTS
+#@ #------------------------------------------
+#@ report_timing -max_paths 1000           > "$PROJ_DIR/backend/dgen/pnr/reports/${my_toplevel}_pnr_timing.txt"
+#@ 
+#@ 
+#@ #------------------------------------------
+#@ # SIGNOFF
+#@ #------------------------------------------
+#@ 
+#@ # Save design in Milkyway format
+#@ #------------------------------------------
+#@ save_mw_cel -as "${my_toplevel}_signoff"
+#@ 
+#@ 
+#@ # Saving the Design in ASCII Format
+#@ #------------------------------------------
+#@ # Before you run the write_verilog command, use the check_database
+#@ check_database
+#@ # 1. Update the power and ground connections
+#@ # 2. Ensure that the object names in the design are Verilog-compliant
+#@ change_names -hierarchy -rules verilog
+#@ # 3. Write the Verilog data for the design
+#@ # By default, the generated Verilog netlist does not include the power and ground nets.
+#@ # To include the power and ground nets, use the -pg and -output_net_name_for_tie options
+#@ write_verilog $PROJ_DIR/backend/dgen/pnr/signoff/[format "%s%s" $my_toplevel "_signoff.v"]     -no_physical_only_cells -pg
+#@ # 4. Write the floorplan information to a DEF file
+#@ write_def -output $PROJ_DIR/backend/dgen/pnr/signoff/[format "%s%s" $my_toplevel "_signoff.def"]
+#@ # 5. Write the design constraints to SDC files
+#@ write_sdc $PROJ_DIR/backend/dgen/pnr/signoff/[format "%s%s" $my_toplevel "_signoff.sdc"]
+#@ # 6. Write the RC extraction data to the parasitic netlist
+#@ write_parasitics -format SPEF -output $PROJ_DIR/backend/dgen/pnr/signoff/[format "%s%s" $my_toplevel "_signoff.spef"]
+#@ 
+#@ 
+#@ # Writing GDSII
+#@ #------------------------------------------
+#@ # Configure GDS options
+#@ set_write_stream_options         -map_layer "$SAED_PATH/Technology_Kit/milkyway/saed90nm.gdsout.map"         -child_depth 20         -keep_data_type         -flatten_via         -output_filling {fill}         -output_outdated_fill         -output_geometry_property
+#@ 
+#@ # Save as GDS
+#@ write_stream -format gds "$PROJ_DIR/backend/dgen/pnr/signoff/${my_toplevel}.gds"
+#@ # -- End source /home/lse_dci01/Ejercicios/tp final/work/pnr/../../backend/scripts/pnr/icc.tcl
+
+exit

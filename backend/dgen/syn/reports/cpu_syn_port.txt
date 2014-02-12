@@ -1,0 +1,66 @@
+ 
+****************************************
+Report : port
+Design : cpu
+Version: H-2013.03-SP2
+Date   : Sun Jan 26 17:21:38 2014
+****************************************
+
+
+                       Pin      Wire     Max     Max     Connection
+Port           Dir     Load     Load     Trans   Cap     Class      Attrs
+--------------------------------------------------------------------------------
+clk            in      0.0000   0.0000   --      --      --         
+imem_data[0]   in      0.0000   0.0000   --      --      --         
+imem_data[1]   in      0.0000   0.0000   --      --      --         
+imem_data[2]   in      0.0000   0.0000   --      --      --         
+imem_data[3]   in      0.0000   0.0000   --      --      --         
+imem_data[4]   in      0.0000   0.0000   --      --      --         
+imem_data[5]   in      0.0000   0.0000   --      --      --         
+imem_data[6]   in      0.0000   0.0000   --      --      --         
+imem_data[7]   in      0.0000   0.0000   --      --      --         
+rst            in      0.0000   0.0000   --      --      --         
+dmem_port_addr[0]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[1]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[2]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[3]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[4]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[5]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[6]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_addr[7]
+               out     0.0000   0.0000   --      --      --         
+dmem_port_write
+               out     0.0000   0.0000   --      --      --         
+imem_addr[0]   out     0.0000   0.0000   --      --      --         
+imem_addr[1]   out     0.0000   0.0000   --      --      --         
+imem_addr[2]   out     0.0000   0.0000   --      --      --         
+imem_addr[3]   out     0.0000   0.0000   --      --      --         
+imem_addr[4]   out     0.0000   0.0000   --      --      --         
+imem_addr[5]   out     0.0000   0.0000   --      --      --         
+imem_addr[6]   out     0.0000   0.0000   --      --      --         
+imem_addr[7]   out     0.0000   0.0000   --      --      --         
+dmem_port_value[0]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[1]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[2]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[3]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[4]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[5]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[6]
+               inout   0.0000   0.0000   --      --      --         
+dmem_port_value[7]
+               inout   0.0000   0.0000   --      --      --         
+
+1

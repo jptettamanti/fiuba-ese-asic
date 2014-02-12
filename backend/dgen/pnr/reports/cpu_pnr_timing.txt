@@ -1,0 +1,1437 @@
+Information: linking reference library : /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/astro/fram/saed90nm. (PSYN-878)
+Warning: The 'CGLPPSX2' cell in the '/opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/astro/fram/saed90nm' physical library does not 
+	have corresponding logical cell description. (PSYN-025)
+Warning: The 'CGLPPSX4' cell in the '/opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/astro/fram/saed90nm' physical library does not 
+	have corresponding logical cell description. (PSYN-025)
+Information: Loading local_link_library attribute {saed90nm_max.db}. (MWDC-290)
+
+  Linking design 'cpu'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (11 designs)              cpu_floorplan.CEL, etc
+  saed90nm_max (library)      /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_max.db
+  saed90nm_min (library)      /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_min.db
+  saed90nm_typ (library)      /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db
+  dw_foundation.sldb (library)
+                              /opt/synopsys/icc/libraries/syn/dw_foundation.sldb
+
+Information: The design has horizontal rows, and Y-symmetry has been used for sites. (MWDC-217)
+Floorplan loading succeeded.
+Load global CTS reference options from NID to stack
+
+  Loading design 'cpu'
+
+
+
+
+Information: Library Manufacturing Grid(GridResolution) : 5
+Information: Time Unit from Milkyway design library: 'ns' 
+Information: Design Library and main library timing units are matched - 1.000 ns. 
+Information: Resistance Unit from Milkyway design library: 'kohm' 
+Warning: Mismatch in the main library and the Milkyway library resistance units. In the main library it is 1000.000 kohm and in the Milkyway design library it is 1.000 kohm. Check and correct the resistance units in the .tf and .db files. (PSYN-476)
+Information: Capacitance Unit from Milkyway design library: 'pf' 
+Warning: Mismatch in the main and the Milkyway library capacitance units. In the main library it is 0.001 pf and in the Milkyway design library it is 1.000 pf. Check and correct the capacitance units in the .tf and .db files. (PSYN-477)
+Warning: Inconsistent library data found for layer PO. (RCEX-018)
+Information: The distance unit in Capacitance and Resistance is 1 micron. (RCEX-007)
+Information: The RC model used is detail route TLU+. (RCEX-015)
+Information: Start mixed mode parasitic extraction. (RCEX-023)
+Information: Start rc extraction...
+Warning: Not enough nets are routed (13/448 < 0.66667); will do extraction by using placement congestion map as background. (RCEX-047)
+Information: Parasitic source is LPE. (RCEX-040)
+Information: Parasitic mode is RealRVirtualC. (RCEX-041)
+Information: Using virtual shield extraction. (RCEX-081)
+Information: Extraction mode is MIN_MAX. (RCEX-042)
+Information: Extraction derate is 125/125/125. (RCEX-043)
+Information: Start back annotation for parasitic extraction. (RCEX-023)
+Information: End back annotation for parasitic extraction. (RCEX-023)
+Information: Start timing update for parasitic extraction. (RCEX-023)
+Information: End timing update for parasitic extraction. (RCEX-023)
+Information: End parasitic extraction. (RCEX-023)
+Information: Start rc update...
+****************************************************************
+Information: TLUPlus based RC computation is enabled. (RCEX-141)
+****************************************************************
+Information: The distance unit in Capacitance and Resistance is 1 micron. (RCEX-007)
+Information: The RC model used is TLU+. (RCEX-015)
+Information: Library Derived Cap for layer M1 : 0.22 0.19 (RCEX-011)
+Information: Library Derived Res for layer M1 : 6.4e-07 6.4e-07 (RCEX-011)
+Information: Library Derived Cap for layer M2 : 0.25 0.21 (RCEX-011)
+Information: Library Derived Res for layer M2 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M3 : 0.14 0.12 (RCEX-011)
+Information: Library Derived Res for layer M3 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M4 : 0.14 0.12 (RCEX-011)
+Information: Library Derived Res for layer M4 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M5 : 0.13 0.1 (RCEX-011)
+Information: Library Derived Res for layer M5 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M6 : 0.13 0.1 (RCEX-011)
+Information: Library Derived Res for layer M6 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M7 : 0.13 0.098 (RCEX-011)
+Information: Library Derived Res for layer M7 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M8 : 0.13 0.098 (RCEX-011)
+Information: Library Derived Res for layer M8 : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Library Derived Cap for layer M9 : 0.16 0.12 (RCEX-011)
+Information: Library Derived Res for layer M9 : 6.2e-08 6.2e-08 (RCEX-011)
+Information: Library Derived Horizontal Cap : 0.16 0.13 (RCEX-011)
+Information: Library Derived Horizontal Res : 4.8e-07 4.8e-07 (RCEX-011)
+Information: Library Derived Vertical Cap : 0.16 0.13 (RCEX-011)
+Information: Library Derived Vertical Res : 5.6e-07 5.6e-07 (RCEX-011)
+Information: Using derived R and C coefficients. (RCEX-008)
+Information: Using region-based R and C coefficients. (RCEX-013)
+Information: Library Derived Via Res : 8e-07 8e-07 (RCEX-011)
+Information: End rc update.
+Information: The mixed mode parasitic extraction has been performed. (RCEX-202)
+Information: Updating graph... (UID-83)
+Information: Updating design information... (UID-85)
+Information: Input delay ('rise') on clock port 'clock' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('fall') on clock port 'clock' will be added to the clock's propagated skew. (TIM-112)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1000
+Design : cpu
+Version: H-2013.03-ICC-SP2
+Date   : Mon Feb  3 15:26:30 2014
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: WORST   Library: saed90nm_max
+	Parasitic source    : LPE
+	Parasitic mode      : RealRVirtualC
+	Extraction mode     : MIN_MAX
+	Extraction derating : 125/125/125
+
+Information: Percent of Arnoldi-based delays =  4.18%
+
+  Startpoint: regs/opcode_reg_2_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/clk_gate_addr_out_reg/latch
+            (positive level-sensitive latch clocked by clock')
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.24       0.24
+  regs/opcode_reg_2_/CLK (DFFARX1)                        0.00       0.24 r
+  regs/opcode_reg_2_/Q (DFFARX1)                          0.78       1.02 f
+  regs/opcode[2] (regs)                                   0.00       1.02 f
+  mcu/opcode[2] (mcu)                                     0.00       1.02 f
+  mcu/U10/ZN (INVX0)                                      0.22 *     1.24 r
+  mcu/U40/Q (AND3X1)                                      0.39 *     1.63 r
+  mcu/U34/Q (AND3X1)                                      0.31 *     1.94 r
+  mcu/U33/Q (OA221X1)                                     0.56 *     2.51 r
+  mcu/pc_load (mcu)                                       0.00       2.51 r
+  pc/load (pc)                                            0.00       2.51 r
+  pc/U4/ZN (INVX0)                                        0.15 *     2.66 f
+  pc/U6/QN (NAND2X0)                                      0.13 *     2.79 r
+  pc/clk_gate_addr_out_reg/EN (SNPS_CLOCK_GATE_HIGH_pc)
+                                                          0.00       2.79 r
+  pc/clk_gate_addr_out_reg/latch/D (LATCHX1)              0.00 *     2.79 r
+  data arrival time                                                  2.79
+
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.05       5.05
+  pc/clk_gate_addr_out_reg/latch/CLK (LATCHX1)            0.00       5.05 r
+  time borrowed from endpoint                             0.00       5.05
+  data required time                                                 5.05
+  --------------------------------------------------------------------------
+  data required time                                                 5.05
+  data arrival time                                                 -2.79
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.26
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clock' pulse width                                      4.99   
+  library setup time                                     -0.22   
+  --------------------------------------------------------------
+  max time borrow                                         4.78   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/clk_gate_acc_reg/latch
+            (positive level-sensitive latch clocked by clock')
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)                        0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)                          0.79       1.03 f
+  regs/opcode[6] (regs)                                   0.00       1.03 f
+  mcu/opcode[6] (mcu)                                     0.00       1.03 f
+  mcu/U30/QN (NAND2X1)                                    0.14 *     1.17 r
+  mcu/U26/ZN (INVX0)                                      0.13 *     1.30 f
+  mcu/U25/QN (NOR2X0)                                     0.32 *     1.62 r
+  mcu/U45/Q (OA21X1)                                      0.55 *     2.18 r
+  mcu/res_update (mcu)                                    0.00       2.18 r
+  regs/res_update (regs)                                  0.00       2.18 r
+  regs/clk_gate_acc_reg/EN (SNPS_CLOCK_GATE_HIGH_regs_1)
+                                                          0.00       2.18 r
+  regs/clk_gate_acc_reg/latch/D (LATCHX1)                 0.00 *     2.18 r
+  data arrival time                                                  2.18
+
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.07       5.07
+  regs/clk_gate_acc_reg/latch/CLK (LATCHX1)               0.00       5.07 r
+  time borrowed from endpoint                             0.00       5.07
+  data required time                                                 5.07
+  --------------------------------------------------------------------------
+  data required time                                                 5.07
+  data arrival time                                                 -2.18
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.89
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clock' pulse width                                      4.99   
+  library setup time                                     -0.20   
+  --------------------------------------------------------------
+  max time borrow                                         4.79   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/clk_gate_psr_reg/latch
+            (positive level-sensitive latch clocked by clock')
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)                        0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)                          0.79       1.03 f
+  regs/opcode[6] (regs)                                   0.00       1.03 f
+  mcu/opcode[6] (mcu)                                     0.00       1.03 f
+  mcu/U30/QN (NAND2X1)                                    0.14 *     1.17 r
+  mcu/U26/ZN (INVX0)                                      0.13 *     1.30 f
+  mcu/U25/QN (NOR2X0)                                     0.32 *     1.62 r
+  mcu/U47/Q (OA21X1)                                      0.48 *     2.10 r
+  mcu/psr_update (mcu)                                    0.00       2.10 r
+  regs/psr_update (regs)                                  0.00       2.10 r
+  regs/clk_gate_psr_reg/EN (SNPS_CLOCK_GATE_HIGH_regs_4)
+                                                          0.00       2.10 r
+  regs/clk_gate_psr_reg/latch/D (LATCHX1)                 0.00 *     2.10 r
+  data arrival time                                                  2.10
+
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.04       5.04
+  regs/clk_gate_psr_reg/latch/CLK (LATCHX1)               0.00       5.04 r
+  time borrowed from endpoint                             0.00       5.04
+  data required time                                                 5.04
+  --------------------------------------------------------------------------
+  data required time                                                 5.04
+  data arrival time                                                 -2.10
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.94
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clock' pulse width                                      4.99   
+  library setup time                                     -0.17   
+  --------------------------------------------------------------
+  max time borrow                                         4.82   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_7_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/CO (FADDX1)                 0.39 *     4.09 f
+  alu/DP_OP_36J1_125_9744_U19/CO (FADDX1)                 0.36 *     4.45 f
+  alu/DP_OP_36J1_125_9744__cell_865/Q (XNOR3X1)           0.65 *     5.10 f
+  alu/U96/Q (XOR2X1)                                      0.29 *     5.39 r
+  alu/U54/QN (NAND2X0)                                    0.15 *     5.54 f
+  alu/U206/QN (NAND4X0)                                   0.22 *     5.77 r
+  alu/U55/QN (NAND2X1)                                    0.17 *     5.94 f
+  alu/U157/QN (NAND2X0)                                   0.37 *     6.31 r
+  alu/result[7] (alu)                                     0.00       6.31 r
+  regs/alu[7] (regs)                                      0.00       6.31 r
+  regs/U42/QN (NAND2X0)                                   0.26 *     6.56 f
+  regs/U40/QN (NAND2X0)                                   0.16 *     6.72 r
+  regs/acc_reg_7_/D (DFFARX1)                             0.00 *     6.72 r
+  data arrival time                                                  6.72
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.25      10.25
+  regs/acc_reg_7_/CLK (DFFARX1)                           0.00      10.25 r
+  library setup time                                     -0.32       9.92
+  data required time                                                 9.92
+  --------------------------------------------------------------------------
+  data required time                                                 9.92
+  data arrival time                                                 -6.72
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.20
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_7_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/CO (FADDX1)                 0.39 *     4.09 f
+  alu/DP_OP_36J1_125_9744_U19/CO (FADDX1)                 0.36 *     4.45 f
+  alu/DP_OP_36J1_125_9744__cell_865/Q (XNOR3X1)           0.65 *     5.10 f
+  alu/U96/Q (XOR2X1)                                      0.29 *     5.39 r
+  alu/U54/QN (NAND2X0)                                    0.15 *     5.54 f
+  alu/U206/QN (NAND4X0)                                   0.22 *     5.77 r
+  alu/U55/QN (NAND2X1)                                    0.17 *     5.94 f
+  alu/U157/QN (NAND2X0)                                   0.37 *     6.31 r
+  alu/result[7] (alu)                                     0.00       6.31 r
+  pc/addr_in[7] (pc)                                      0.00       6.31 r
+  pc/U27/Q (AO22X1)                                       0.46 *     6.76 r
+  pc/addr_out_reg_7_/D (DFFARX1)                          0.00 *     6.76 r
+  data arrival time                                                  6.76
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.26      10.26
+  pc/addr_out_reg_7_/CLK (DFFARX1)                        0.00      10.26 r
+  library setup time                                     -0.28       9.98
+  data required time                                                 9.98
+  --------------------------------------------------------------------------
+  data required time                                                 9.98
+  data arrival time                                                 -6.76
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.21
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/psr_reg_0_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/CO (FADDX1)                 0.39 *     4.09 f
+  alu/DP_OP_36J1_125_9744_U19/CO (FADDX1)                 0.36 *     4.45 f
+  alu/DP_OP_36J1_125_9744__cell_865/Q (XNOR3X1)           0.65 *     5.10 f
+  alu/U96/Q (XOR2X1)                                      0.31 *     5.41 f
+  alu/U39/QN (NOR4X0)                                     0.21 *     5.62 r
+  alu/U40/QN (NAND3X0)                                    0.22 *     5.84 f
+  alu/U29/QN (NAND4X0)                                    0.20 *     6.04 r
+  alu/U35/Q (AO222X1)                                     0.43 *     6.47 r
+  alu/apsr[0] (alu)                                       0.00       6.47 r
+  regs/apsr[0] (regs)                                     0.00       6.47 r
+  regs/psr_reg_0_/D (DFFARX1)                             0.00 *     6.47 r
+  data arrival time                                                  6.47
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.23      10.23
+  regs/psr_reg_0_/CLK (DFFARX1)                           0.00      10.23 r
+  library setup time                                     -0.31       9.92
+  data required time                                                 9.92
+  --------------------------------------------------------------------------
+  data required time                                                 9.92
+  data arrival time                                                 -6.47
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.45
+
+
+  Startpoint: mcu/state_reg_1_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/clk_gate_imem_reg/latch
+            (positive level-sensitive latch clocked by clock')
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.23       0.23
+  mcu/state_reg_1_/CLK (DFFASX1)                          0.00       0.23 r
+  mcu/state_reg_1_/Q (DFFASX1)                            0.82       1.05 f
+  mcu/U21/QN (NOR2X0)                                     0.37 *     1.42 r
+  mcu/imem_update (mcu)                                   0.00       1.42 r
+  regs/imem_update (regs)                                 0.00       1.42 r
+  regs/clk_gate_imem_reg/EN (SNPS_CLOCK_GATE_HIGH_regs_3)
+                                                          0.00       1.42 r
+  regs/clk_gate_imem_reg/latch/D (LATCHX1)                0.00 *     1.42 r
+  data arrival time                                                  1.42
+
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.05       5.05
+  regs/clk_gate_imem_reg/latch/CLK (LATCHX1)              0.00       5.05 r
+  time borrowed from endpoint                             0.00       5.05
+  data required time                                                 5.05
+  --------------------------------------------------------------------------
+  data required time                                                 5.05
+  data arrival time                                                 -1.42
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.63
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clock' pulse width                                      4.99   
+  library setup time                                     -0.35   
+  --------------------------------------------------------------
+  max time borrow                                         4.64   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/psr_reg_2_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/CO (FADDX1)                 0.39 *     4.09 f
+  alu/DP_OP_36J1_125_9744_U19/CO (FADDX1)                 0.36 *     4.45 f
+  alu/DP_OP_36J1_125_9744__cell_865/Q (XNOR3X1)           0.65 *     5.10 f
+  alu/U96/Q (XOR2X1)                                      0.29 *     5.39 r
+  alu/U54/QN (NAND2X0)                                    0.15 *     5.54 f
+  alu/U206/QN (NAND4X0)                                   0.22 *     5.77 r
+  alu/U55/QN (NAND2X1)                                    0.17 *     5.94 f
+  alu/U42/QN (NAND2X0)                                    0.16 *     6.10 r
+  alu/apsr[2] (alu)                                       0.00       6.10 r
+  regs/apsr[2] (regs)                                     0.00       6.10 r
+  regs/psr_reg_2_/D (DFFARX1)                             0.00 *     6.10 r
+  data arrival time                                                  6.10
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.23      10.23
+  regs/psr_reg_2_/CLK (DFFARX1)                           0.00      10.23 r
+  library setup time                                     -0.33       9.90
+  data required time                                                 9.90
+  --------------------------------------------------------------------------
+  data required time                                                 9.90
+  data arrival time                                                 -6.10
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.80
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_6_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/CO (FADDX1)                 0.39 *     4.09 f
+  alu/DP_OP_36J1_125_9744_U19/S (FADDX1)                  0.48 *     4.57 f
+  alu/U81/Q (XNOR2X1)                                     0.44 *     5.00 r
+  alu/U197/QN (NAND2X1)                                   0.12 *     5.12 f
+  alu/U205/QN (NAND3X0)                                   0.16 *     5.28 r
+  alu/U27/Q (AO222X1)                                     0.37 *     5.66 r
+  alu/result[6] (alu)                                     0.00       5.66 r
+  regs/alu[6] (regs)                                      0.00       5.66 r
+  regs/U75/Q (AO222X1)                                    0.41 *     6.06 r
+  regs/acc_reg_6_/D (DFFARX1)                             0.00 *     6.06 r
+  data arrival time                                                  6.06
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.25      10.25
+  regs/acc_reg_6_/CLK (DFFARX1)                           0.00      10.25 r
+  library setup time                                     -0.29       9.95
+  data required time                                                 9.95
+  --------------------------------------------------------------------------
+  data required time                                                 9.95
+  data arrival time                                                 -6.06
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.89
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_6_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/CO (FADDX1)                 0.39 *     4.09 f
+  alu/DP_OP_36J1_125_9744_U19/S (FADDX1)                  0.48 *     4.57 f
+  alu/U81/Q (XNOR2X1)                                     0.44 *     5.00 r
+  alu/U197/QN (NAND2X1)                                   0.12 *     5.12 f
+  alu/U205/QN (NAND3X0)                                   0.16 *     5.28 r
+  alu/U27/Q (AO222X1)                                     0.37 *     5.66 r
+  alu/result[6] (alu)                                     0.00       5.66 r
+  pc/addr_in[6] (pc)                                      0.00       5.66 r
+  pc/U26/Q (AO22X1)                                       0.37 *     6.02 r
+  pc/addr_out_reg_6_/D (DFFARX1)                          0.00 *     6.02 r
+  data arrival time                                                  6.02
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.26      10.26
+  pc/addr_out_reg_6_/CLK (DFFARX1)                        0.00      10.26 r
+  library setup time                                     -0.28       9.98
+  data required time                                                 9.98
+  --------------------------------------------------------------------------
+  data required time                                                 9.98
+  data arrival time                                                 -6.02
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.95
+
+
+  Startpoint: mcu/state_reg_1_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/clk_gate_opcode_reg/latch
+            (positive level-sensitive latch clocked by clock')
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.23       0.23
+  mcu/state_reg_1_/CLK (DFFASX1)                          0.00       0.23 r
+  mcu/state_reg_1_/Q (DFFASX1)                            0.82       1.05 f
+  mcu/opcode_update (mcu)                                 0.00       1.05 f
+  regs/opcode_update (regs)                               0.00       1.05 f
+  regs/clk_gate_opcode_reg/EN (SNPS_CLOCK_GATE_HIGH_regs_0)
+                                                          0.00       1.05 f
+  regs/clk_gate_opcode_reg/latch/D (LATCHX1)              0.00 *     1.05 f
+  data arrival time                                                  1.05
+
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.05       5.05
+  regs/clk_gate_opcode_reg/latch/CLK (LATCHX1)            0.00       5.05 r
+  time borrowed from endpoint                             0.00       5.05
+  data required time                                                 5.05
+  --------------------------------------------------------------------------
+  data required time                                                 5.05
+  data arrival time                                                 -1.05
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.00
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clock' pulse width                                      4.99   
+  library setup time                                     -0.29   
+  --------------------------------------------------------------
+  max time borrow                                         4.70   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_5_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/S (FADDX1)                  0.50 *     4.19 f
+  alu/U146/Q (XNOR2X1)                                    0.43 *     4.63 r
+  alu/U97/QN (NAND2X0)                                    0.18 *     4.81 f
+  alu/U236/QN (NAND4X0)                                   0.20 *     5.01 r
+  alu/U237/Q (AO221X1)                                    0.47 *     5.47 r
+  alu/result[5] (alu)                                     0.00       5.47 r
+  regs/alu[5] (regs)                                      0.00       5.47 r
+  regs/U74/Q (AO222X1)                                    0.40 *     5.87 r
+  regs/acc_reg_5_/D (DFFARX1)                             0.00 *     5.87 r
+  data arrival time                                                  5.87
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.25      10.25
+  regs/acc_reg_5_/CLK (DFFARX1)                           0.00      10.25 r
+  library setup time                                     -0.29       9.95
+  data required time                                                 9.95
+  --------------------------------------------------------------------------
+  data required time                                                 9.95
+  data arrival time                                                 -5.87
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.08
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_5_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/CO (FADDX1)                                    0.39 *     3.70 f
+  alu/DP_OP_36J1_125_9744_U20/S (FADDX1)                  0.50 *     4.19 f
+  alu/U146/Q (XNOR2X1)                                    0.43 *     4.63 r
+  alu/U97/QN (NAND2X0)                                    0.18 *     4.81 f
+  alu/U236/QN (NAND4X0)                                   0.20 *     5.01 r
+  alu/U237/Q (AO221X1)                                    0.47 *     5.47 r
+  alu/result[5] (alu)                                     0.00       5.47 r
+  pc/addr_in[5] (pc)                                      0.00       5.47 r
+  pc/U23/Q (AO22X1)                                       0.35 *     5.82 r
+  pc/addr_out_reg_5_/D (DFFARX1)                          0.00 *     5.82 r
+  data arrival time                                                  5.82
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.26      10.26
+  pc/addr_out_reg_5_/CLK (DFFARX1)                        0.00      10.26 r
+  library setup time                                     -0.28       9.98
+  data required time                                                 9.98
+  --------------------------------------------------------------------------
+  data required time                                                 9.98
+  data arrival time                                                 -5.82
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.16
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_4_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/S (FADDX1)                                     0.51 *     3.81 f
+  alu/U145/Q (XNOR2X1)                                    0.44 *     4.26 r
+  alu/U59/QN (NAND2X0)                                    0.19 *     4.44 f
+  alu/U234/QN (NAND4X0)                                   0.20 *     4.64 r
+  alu/U235/Q (AO221X1)                                    0.48 *     5.12 r
+  alu/result[4] (alu)                                     0.00       5.12 r
+  regs/alu[4] (regs)                                      0.00       5.12 r
+  regs/U73/Q (AO222X1)                                    0.40 *     5.52 r
+  regs/acc_reg_4_/D (DFFARX1)                             0.00 *     5.52 r
+  data arrival time                                                  5.52
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.25      10.25
+  regs/acc_reg_4_/CLK (DFFARX1)                           0.00      10.25 r
+  library setup time                                     -0.29       9.96
+  data required time                                                 9.96
+  --------------------------------------------------------------------------
+  data required time                                                 9.96
+  data arrival time                                                 -5.52
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.43
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/psr_reg_1_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/DP_OP_35J1_124_9704_U9/CO (FADDX1)                  0.51 *     2.23 f
+  alu/DP_OP_35J1_124_9704_U8/CO (FADDX1)                  0.38 *     2.62 f
+  alu/U112/CO (FADDX1)                                    0.39 *     3.01 f
+  alu/DP_OP_35J1_124_9704_U6/CO (FADDX1)                  0.39 *     3.40 f
+  alu/DP_OP_35J1_124_9704_U5/CO (FADDX1)                  0.39 *     3.78 f
+  alu/DP_OP_35J1_124_9704_U4/CO (FADDX1)                  0.39 *     4.17 f
+  alu/DP_OP_35J1_124_9704_U3/CO (FADDX1)                  0.38 *     4.56 f
+  alu/DP_OP_35J1_124_9704_U2/CO (FADDX1)                  0.35 *     4.91 f
+  alu/U70/Q (AO22X1)                                      0.38 *     5.29 f
+  alu/U224/Q (MUX21X1)                                    0.28 *     5.57 f
+  alu/apsr[1] (alu)                                       0.00       5.57 f
+  regs/apsr[1] (regs)                                     0.00       5.57 f
+  regs/psr_reg_1_/D (DFFARX1)                             0.00 *     5.57 f
+  data arrival time                                                  5.57
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.23      10.23
+  regs/psr_reg_1_/CLK (DFFARX1)                           0.00      10.23 r
+  library setup time                                     -0.21      10.01
+  data required time                                                10.01
+  --------------------------------------------------------------------------
+  data required time                                                10.01
+  data arrival time                                                 -5.57
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.45
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_4_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/CO (FADDX1)                                    0.38 *     3.31 f
+  alu/U151/S (FADDX1)                                     0.51 *     3.81 f
+  alu/U145/Q (XNOR2X1)                                    0.44 *     4.26 r
+  alu/U59/QN (NAND2X0)                                    0.19 *     4.44 f
+  alu/U234/QN (NAND4X0)                                   0.20 *     4.64 r
+  alu/U235/Q (AO221X1)                                    0.48 *     5.12 r
+  alu/result[4] (alu)                                     0.00       5.12 r
+  pc/addr_in[4] (pc)                                      0.00       5.12 r
+  pc/U22/Q (AO22X1)                                       0.37 *     5.49 r
+  pc/addr_out_reg_4_/D (DFFARX1)                          0.00 *     5.49 r
+  data arrival time                                                  5.49
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.26      10.26
+  pc/addr_out_reg_4_/CLK (DFFARX1)                        0.00      10.26 r
+  library setup time                                     -0.28       9.98
+  data required time                                                 9.98
+  --------------------------------------------------------------------------
+  data required time                                                 9.98
+  data arrival time                                                 -5.49
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.49
+
+
+  Startpoint: regs/clk_gate_acc_reg/latch
+              (positive level-sensitive latch clocked by clock')
+  Endpoint: regs/clk_gate_acc_reg/main_gate
+            (gating element for clock clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.07       5.07
+  regs/clk_gate_acc_reg/latch/CLK (LATCHX1)               0.00       5.07 r
+  regs/clk_gate_acc_reg/latch/Q (LATCHX1)                 0.44       5.51 r
+  regs/clk_gate_acc_reg/main_gate/IN1 (AND2X2)            0.00 *     5.51 r
+  data arrival time                                                  5.51
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.00      10.00
+  regs/clk_gate_acc_reg/main_gate/IN2 (AND2X2)            0.00      10.00 r
+  clock gating setup time                                 0.00      10.00
+  data required time                                                10.00
+  --------------------------------------------------------------------------
+  data required time                                                10.00
+  data arrival time                                                 -5.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.49
+
+
+  Startpoint: regs/clk_gate_psr_reg/latch
+              (positive level-sensitive latch clocked by clock')
+  Endpoint: regs/clk_gate_psr_reg/main_gate
+            (gating element for clock clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.04       5.04
+  regs/clk_gate_psr_reg/latch/CLK (LATCHX1)               0.00       5.04 r
+  regs/clk_gate_psr_reg/latch/Q (LATCHX1)                 0.40       5.44 r
+  regs/clk_gate_psr_reg/main_gate/IN1 (AND2X2)            0.00 *     5.44 r
+  data arrival time                                                  5.44
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.00      10.00
+  regs/clk_gate_psr_reg/main_gate/IN2 (AND2X2)            0.00      10.00 r
+  clock gating setup time                                 0.00      10.00
+  data required time                                                10.00
+  --------------------------------------------------------------------------
+  data required time                                                10.00
+  data arrival time                                                 -5.44
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.56
+
+
+  Startpoint: pc/clk_gate_addr_out_reg/latch
+              (positive level-sensitive latch clocked by clock')
+  Endpoint: pc/clk_gate_addr_out_reg/main_gate
+            (gating element for clock clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.05       5.05
+  pc/clk_gate_addr_out_reg/latch/CLK (LATCHX1)            0.00       5.05 r
+  pc/clk_gate_addr_out_reg/latch/Q (LATCHX1)              0.38       5.43 r
+  pc/clk_gate_addr_out_reg/main_gate/IN1 (AND2X2)         0.00 *     5.43 r
+  data arrival time                                                  5.43
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.00      10.00
+  pc/clk_gate_addr_out_reg/main_gate/IN2 (AND2X2)         0.00      10.00 r
+  clock gating setup time                                 0.00      10.00
+  data required time                                                10.00
+  --------------------------------------------------------------------------
+  data required time                                                10.00
+  data arrival time                                                 -5.43
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.57
+
+
+  Startpoint: regs/clk_gate_imem_reg/latch
+              (positive level-sensitive latch clocked by clock')
+  Endpoint: regs/clk_gate_imem_reg/main_gate
+            (gating element for clock clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.05       5.05
+  regs/clk_gate_imem_reg/latch/CLK (LATCHX1)              0.00       5.05 r
+  regs/clk_gate_imem_reg/latch/Q (LATCHX1)                0.38       5.43 r
+  regs/clk_gate_imem_reg/main_gate/IN1 (AND2X2)           0.00 *     5.43 r
+  data arrival time                                                  5.43
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.00      10.00
+  regs/clk_gate_imem_reg/main_gate/IN2 (AND2X2)           0.00      10.00 r
+  clock gating setup time                                 0.00      10.00
+  data required time                                                10.00
+  --------------------------------------------------------------------------
+  data required time                                                10.00
+  data arrival time                                                 -5.43
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.57
+
+
+  Startpoint: regs/clk_gate_opcode_reg/latch
+              (positive level-sensitive latch clocked by clock')
+  Endpoint: regs/clk_gate_opcode_reg/main_gate
+            (gating element for clock clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock' (rise edge)                                5.00       5.00
+  clock network delay (propagated)                        0.05       5.05
+  regs/clk_gate_opcode_reg/latch/CLK (LATCHX1)            0.00       5.05 r
+  regs/clk_gate_opcode_reg/latch/Q (LATCHX1)              0.37       5.42 r
+  regs/clk_gate_opcode_reg/main_gate/IN1 (AND2X2)         0.00 *     5.42 r
+  data arrival time                                                  5.42
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.00      10.00
+  regs/clk_gate_opcode_reg/main_gate/IN2 (AND2X2)         0.00      10.00 r
+  clock gating setup time                                 0.00      10.00
+  data required time                                                10.00
+  --------------------------------------------------------------------------
+  data required time                                                10.00
+  data arrival time                                                 -5.42
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.58
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_3_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/S (FADDX1)                                     0.51 *     3.43 f
+  alu/U144/Q (XNOR2X1)                                    0.45 *     3.88 r
+  alu/U191/QN (NAND2X1)                                   0.14 *     4.01 f
+  alu/U232/QN (NAND4X0)                                   0.22 *     4.23 r
+  alu/U233/Q (AO221X1)                                    0.47 *     4.70 r
+  alu/result[3] (alu)                                     0.00       4.70 r
+  regs/alu[3] (regs)                                      0.00       4.70 r
+  regs/U72/Q (AO222X1)                                    0.41 *     5.11 r
+  regs/acc_reg_3_/D (DFFARX1)                             0.00 *     5.11 r
+  data arrival time                                                  5.11
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.25      10.25
+  regs/acc_reg_3_/CLK (DFFARX1)                           0.00      10.25 r
+  library setup time                                     -0.30       9.95
+  data required time                                                 9.95
+  --------------------------------------------------------------------------
+  data required time                                                 9.95
+  data arrival time                                                 -5.11
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.84
+
+
+  Startpoint: pc/addr_out_reg_0_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_3_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (propagated)                        0.26       0.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)                        0.00       0.26 r
+  pc/addr_out_reg_0_/Q (DFFARX1)                          0.87       1.13 f
+  pc/addr_out[0] (pc)                                     0.00       1.13 f
+  regs/pc[0] (regs)                                       0.00       1.13 f
+  regs/U14/QN (NAND2X0)                                   0.16 *     1.29 r
+  regs/U36/QN (NAND3X0)                                   0.43 *     1.72 f
+  regs/opa[0] (regs)                                      0.00       1.72 f
+  alu/a_i[0] (alu)                                        0.00       1.72 f
+  alu/U47/ZN (INVX0)                                      0.15 *     1.87 r
+  alu/U156/QN (NAND2X1)                                   0.21 *     2.08 f
+  alu/U11/CO (FADDX1)                                     0.45 *     2.53 f
+  alu/DP_OP_36J1_125_9744_U23/CO (FADDX1)                 0.39 *     2.92 f
+  alu/U149/S (FADDX1)                                     0.51 *     3.43 f
+  alu/U144/Q (XNOR2X1)                                    0.45 *     3.88 r
+  alu/U191/QN (NAND2X1)                                   0.14 *     4.01 f
+  alu/U232/QN (NAND4X0)                                   0.22 *     4.23 r
+  alu/U233/Q (AO221X1)                                    0.47 *     4.70 r
+  alu/result[3] (alu)                                     0.00       4.70 r
+  pc/addr_in[3] (pc)                                      0.00       4.70 r
+  pc/U19/Q (AO22X1)                                       0.36 *     5.06 r
+  pc/addr_out_reg_3_/D (DFFARX1)                          0.00 *     5.06 r
+  data arrival time                                                  5.06
+
+  clock clock (rise edge)                                10.00      10.00
+  clock network delay (propagated)                        0.26      10.26
+  pc/addr_out_reg_3_/CLK (DFFARX1)                        0.00      10.26 r
+  library setup time                                     -0.28       9.98
+  data required time                                                 9.98
+  --------------------------------------------------------------------------
+  data required time                                                 9.98
+  data arrival time                                                 -5.06
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.92
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_0_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)         0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)           0.79       1.03 f
+  regs/opcode[6] (regs)                    0.00       1.03 f
+  mcu/opcode[6] (mcu)                      0.00       1.03 f
+  mcu/U16/QN (NOR2X0)                      0.26 *     1.29 r
+  mcu/U24/ZN (INVX0)                       0.20 *     1.49 f
+  mcu/U7/QN (NAND2X0)                      0.15 *     1.64 r
+  mcu/U38/Q (OR2X1)                        0.42 *     2.06 r
+  mcu/U6/Q (AO21X1)                        0.40 *     2.45 r
+  mcu/alu_operation[1] (mcu)               0.00       2.45 r
+  alu/operation[1] (alu)                   0.00       2.45 r
+  alu/U185/ZN (INVX0)                      0.18 *     2.64 f
+  alu/U50/Q (OR2X1)                        0.22 *     2.85 f
+  alu/U140/QN (NOR2X0)                     0.45 *     3.31 r
+  alu/U225/QN (AOI22X1)                    0.53 *     3.84 f
+  alu/U226/QN (NAND4X0)                    0.13 *     3.97 r
+  alu/U24/Q (AO222X1)                      0.49 *     4.46 r
+  alu/result[0] (alu)                      0.00       4.46 r
+  regs/alu[0] (regs)                       0.00       4.46 r
+  regs/U69/Q (AO222X1)                     0.39 *     4.85 r
+  regs/acc_reg_0_/D (DFFARX1)              0.00 *     4.85 r
+  data arrival time                                   4.85
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.25      10.25
+  regs/acc_reg_0_/CLK (DFFARX1)            0.00      10.25 r
+  library setup time                      -0.29       9.95
+  data required time                                  9.95
+  -----------------------------------------------------------
+  data required time                                  9.95
+  data arrival time                                  -4.85
+  -----------------------------------------------------------
+  slack (MET)                                         5.11
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_1_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)         0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)           0.79       1.03 f
+  regs/opcode[6] (regs)                    0.00       1.03 f
+  mcu/opcode[6] (mcu)                      0.00       1.03 f
+  mcu/U16/QN (NOR2X0)                      0.26 *     1.29 r
+  mcu/U24/ZN (INVX0)                       0.20 *     1.49 f
+  mcu/U7/QN (NAND2X0)                      0.15 *     1.64 r
+  mcu/U38/Q (OR2X1)                        0.42 *     2.06 r
+  mcu/U6/Q (AO21X1)                        0.40 *     2.45 r
+  mcu/alu_operation[1] (mcu)               0.00       2.45 r
+  alu/operation[1] (alu)                   0.00       2.45 r
+  alu/U185/ZN (INVX0)                      0.18 *     2.64 f
+  alu/U50/Q (OR2X1)                        0.22 *     2.85 f
+  alu/U140/QN (NOR2X0)                     0.45 *     3.31 r
+  alu/U111/QN (AOI22X1)                    0.54 *     3.85 f
+  alu/U228/QN (NAND4X0)                    0.11 *     3.96 r
+  alu/U229/Q (AO221X1)                     0.46 *     4.42 r
+  alu/result[1] (alu)                      0.00       4.42 r
+  regs/alu[1] (regs)                       0.00       4.42 r
+  regs/U70/Q (AO222X1)                     0.39 *     4.82 r
+  regs/acc_reg_1_/D (DFFARX1)              0.00 *     4.82 r
+  data arrival time                                   4.82
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.25      10.25
+  regs/acc_reg_1_/CLK (DFFARX1)            0.00      10.25 r
+  library setup time                      -0.29       9.96
+  data required time                                  9.96
+  -----------------------------------------------------------
+  data required time                                  9.96
+  data arrival time                                  -4.82
+  -----------------------------------------------------------
+  slack (MET)                                         5.14
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: regs/acc_reg_2_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)         0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)           0.79       1.03 f
+  regs/opcode[6] (regs)                    0.00       1.03 f
+  mcu/opcode[6] (mcu)                      0.00       1.03 f
+  mcu/U16/QN (NOR2X0)                      0.26 *     1.29 r
+  mcu/U24/ZN (INVX0)                       0.20 *     1.49 f
+  mcu/U7/QN (NAND2X0)                      0.15 *     1.64 r
+  mcu/U38/Q (OR2X1)                        0.42 *     2.06 r
+  mcu/U6/Q (AO21X1)                        0.40 *     2.45 r
+  mcu/alu_operation[1] (mcu)               0.00       2.45 r
+  alu/operation[1] (alu)                   0.00       2.45 r
+  alu/U185/ZN (INVX0)                      0.18 *     2.64 f
+  alu/U50/Q (OR2X1)                        0.22 *     2.85 f
+  alu/U140/QN (NOR2X0)                     0.45 *     3.31 r
+  alu/U110/QN (AOI22X1)                    0.54 *     3.84 f
+  alu/U230/QN (NAND4X0)                    0.11 *     3.96 r
+  alu/U231/Q (AO221X1)                     0.46 *     4.42 r
+  alu/result[2] (alu)                      0.00       4.42 r
+  regs/alu[2] (regs)                       0.00       4.42 r
+  regs/U71/Q (AO222X1)                     0.39 *     4.81 r
+  regs/acc_reg_2_/D (DFFARX1)              0.00 *     4.81 r
+  data arrival time                                   4.81
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.25      10.25
+  regs/acc_reg_2_/CLK (DFFARX1)            0.00      10.25 r
+  library setup time                      -0.29       9.96
+  data required time                                  9.96
+  -----------------------------------------------------------
+  data required time                                  9.96
+  data arrival time                                  -4.81
+  -----------------------------------------------------------
+  slack (MET)                                         5.14
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_0_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)         0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)           0.79       1.03 f
+  regs/opcode[6] (regs)                    0.00       1.03 f
+  mcu/opcode[6] (mcu)                      0.00       1.03 f
+  mcu/U16/QN (NOR2X0)                      0.26 *     1.29 r
+  mcu/U24/ZN (INVX0)                       0.20 *     1.49 f
+  mcu/U7/QN (NAND2X0)                      0.15 *     1.64 r
+  mcu/U38/Q (OR2X1)                        0.42 *     2.06 r
+  mcu/U6/Q (AO21X1)                        0.40 *     2.45 r
+  mcu/alu_operation[1] (mcu)               0.00       2.45 r
+  alu/operation[1] (alu)                   0.00       2.45 r
+  alu/U185/ZN (INVX0)                      0.18 *     2.64 f
+  alu/U50/Q (OR2X1)                        0.22 *     2.85 f
+  alu/U140/QN (NOR2X0)                     0.45 *     3.31 r
+  alu/U225/QN (AOI22X1)                    0.53 *     3.84 f
+  alu/U226/QN (NAND4X0)                    0.13 *     3.97 r
+  alu/U24/Q (AO222X1)                      0.49 *     4.46 r
+  alu/result[0] (alu)                      0.00       4.46 r
+  pc/addr_in[0] (pc)                       0.00       4.46 r
+  pc/U20/Q (AO22X1)                        0.35 *     4.81 r
+  pc/addr_out_reg_0_/D (DFFARX1)           0.00 *     4.81 r
+  data arrival time                                   4.81
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.26      10.26
+  pc/addr_out_reg_0_/CLK (DFFARX1)         0.00      10.26 r
+  library setup time                      -0.28       9.98
+  data required time                                  9.98
+  -----------------------------------------------------------
+  data required time                                  9.98
+  data arrival time                                  -4.81
+  -----------------------------------------------------------
+  slack (MET)                                         5.17
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_2_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)         0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)           0.79       1.03 f
+  regs/opcode[6] (regs)                    0.00       1.03 f
+  mcu/opcode[6] (mcu)                      0.00       1.03 f
+  mcu/U16/QN (NOR2X0)                      0.26 *     1.29 r
+  mcu/U24/ZN (INVX0)                       0.20 *     1.49 f
+  mcu/U7/QN (NAND2X0)                      0.15 *     1.64 r
+  mcu/U38/Q (OR2X1)                        0.42 *     2.06 r
+  mcu/U6/Q (AO21X1)                        0.40 *     2.45 r
+  mcu/alu_operation[1] (mcu)               0.00       2.45 r
+  alu/operation[1] (alu)                   0.00       2.45 r
+  alu/U185/ZN (INVX0)                      0.18 *     2.64 f
+  alu/U50/Q (OR2X1)                        0.22 *     2.85 f
+  alu/U140/QN (NOR2X0)                     0.45 *     3.31 r
+  alu/U110/QN (AOI22X1)                    0.54 *     3.84 f
+  alu/U230/QN (NAND4X0)                    0.11 *     3.96 r
+  alu/U231/Q (AO221X1)                     0.46 *     4.42 r
+  alu/result[2] (alu)                      0.00       4.42 r
+  pc/addr_in[2] (pc)                       0.00       4.42 r
+  pc/U21/Q (AO22X1)                        0.36 *     4.78 r
+  pc/addr_out_reg_2_/D (DFFARX1)           0.00 *     4.78 r
+  data arrival time                                   4.78
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.26      10.26
+  pc/addr_out_reg_2_/CLK (DFFARX1)         0.00      10.26 r
+  library setup time                      -0.28       9.98
+  data required time                                  9.98
+  -----------------------------------------------------------
+  data required time                                  9.98
+  data arrival time                                  -4.78
+  -----------------------------------------------------------
+  slack (MET)                                         5.20
+
+
+  Startpoint: regs/opcode_reg_6_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: pc/addr_out_reg_1_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.24       0.24
+  regs/opcode_reg_6_/CLK (DFFARX1)         0.00       0.24 r
+  regs/opcode_reg_6_/Q (DFFARX1)           0.79       1.03 f
+  regs/opcode[6] (regs)                    0.00       1.03 f
+  mcu/opcode[6] (mcu)                      0.00       1.03 f
+  mcu/U16/QN (NOR2X0)                      0.26 *     1.29 r
+  mcu/U24/ZN (INVX0)                       0.20 *     1.49 f
+  mcu/U7/QN (NAND2X0)                      0.15 *     1.64 r
+  mcu/U38/Q (OR2X1)                        0.42 *     2.06 r
+  mcu/U6/Q (AO21X1)                        0.40 *     2.45 r
+  mcu/alu_operation[1] (mcu)               0.00       2.45 r
+  alu/operation[1] (alu)                   0.00       2.45 r
+  alu/U185/ZN (INVX0)                      0.18 *     2.64 f
+  alu/U50/Q (OR2X1)                        0.22 *     2.85 f
+  alu/U140/QN (NOR2X0)                     0.45 *     3.31 r
+  alu/U111/QN (AOI22X1)                    0.54 *     3.85 f
+  alu/U228/QN (NAND4X0)                    0.11 *     3.96 r
+  alu/U229/Q (AO221X1)                     0.46 *     4.42 r
+  alu/result[1] (alu)                      0.00       4.42 r
+  pc/addr_in[1] (pc)                       0.00       4.42 r
+  pc/U18/Q (AO22X1)                        0.35 *     4.78 r
+  pc/addr_out_reg_1_/D (DFFARX1)           0.00 *     4.78 r
+  data arrival time                                   4.78
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.26      10.26
+  pc/addr_out_reg_1_/CLK (DFFARX1)         0.00      10.26 r
+  library setup time                      -0.28       9.98
+  data required time                                  9.98
+  -----------------------------------------------------------
+  data required time                                  9.98
+  data arrival time                                  -4.78
+  -----------------------------------------------------------
+  slack (MET)                                         5.20
+
+
+  Startpoint: mcu/state_reg_1_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: mcu/state_reg_0_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.23       0.23
+  mcu/state_reg_1_/CLK (DFFASX1)           0.00       0.23 r
+  mcu/state_reg_1_/Q (DFFASX1)             0.82       1.05 f
+  mcu/U21/QN (NOR2X0)                      0.37 *     1.42 r
+  mcu/state_reg_0_/D (DFFASX1)             0.00 *     1.42 r
+  data arrival time                                   1.42
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.23      10.23
+  mcu/state_reg_0_/CLK (DFFASX1)           0.00      10.23 r
+  library setup time                      -0.49       9.74
+  data required time                                  9.74
+  -----------------------------------------------------------
+  data required time                                  9.74
+  data arrival time                                  -1.42
+  -----------------------------------------------------------
+  slack (MET)                                         8.31
+
+
+  Startpoint: mcu/state_reg_1_
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: mcu/state_reg_1_
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (propagated)         0.23       0.23
+  mcu/state_reg_1_/CLK (DFFASX1)           0.00       0.23 r
+  mcu/state_reg_1_/Q (DFFASX1)             0.82       1.05 f
+  mcu/U20/QN (NOR2X0)                      0.17 *     1.22 r
+  mcu/state_reg_1_/D (DFFASX1)             0.00 *     1.22 r
+  data arrival time                                   1.22
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (propagated)         0.23      10.23
+  mcu/state_reg_1_/CLK (DFFASX1)           0.00      10.23 r
+  library setup time                      -0.37       9.85
+  data required time                                  9.85
+  -----------------------------------------------------------
+  data required time                                  9.85
+  data arrival time                                  -1.22
+  -----------------------------------------------------------
+  slack (MET)                                         8.63
+
+
+1

@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : clock_gating
+Design : cpu
+Version: H-2013.03-SP2
+Date   : Sun Jan 26 17:21:37 2014
+****************************************
+
+
+
+                             Clock Gating Summary
+          ------------------------------------------------------------
+          |    Number of Clock gating elements    |        5         |
+          |                                       |                  |
+          |    Number of Gated registers          |    35 (94.59%)   |
+          |                                       |                  |
+          |    Number of Ungated registers        |     2 (5.41%)    |
+          |                                       |                  |
+          |    Total number of registers          |       37         |
+          ------------------------------------------------------------
+
+
+
+1

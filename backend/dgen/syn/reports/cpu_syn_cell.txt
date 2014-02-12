@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : cell
+Design : cpu
+Version: H-2013.03-SP2
+Date   : Sun Jan 26 17:21:38 2014
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U1                        NBUFFX4         saed90nm_max    10.137600 
+alu                       alu                             2415.513609
+                                                                    h
+mcu                       mcu                             524.390406
+                                                                    h, n
+pc                        pc                              587.980804
+                                                                    h, n
+ram_port                  ram_port                        97.689600 h, n
+regs                      regs                            1585.152018
+                                                                    h, n
+--------------------------------------------------------------------------------
+Total 6 cells                                             5220.864037
+1

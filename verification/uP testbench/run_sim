@@ -9,7 +9,7 @@ iverilog \
    -I ./rtl/ \
    -g2001 \
    -o ./waves/tb_run \
-   ./rtl/*.v ./*.v
+   ./rtl/*.v
 
 if [ -f ./waves/tb_run ]; then
    vvp ./waves/tb_run

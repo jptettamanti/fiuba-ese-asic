@@ -1,0 +1,7 @@
+set_user_match   -inverted   $svf_ref/cpu/mcu/rst   $svf_impl/cpu/mcu/rst
+set_user_match   -inverted   $svf_ref/cpu/regs/rst   $svf_impl/cpu/regs/rst
+set_user_match   -inverted   $svf_ref/cpu/pc/rst   $svf_impl/cpu/pc/rst
+guide_constraints -body { regs } -equivalent { regs/rst  ~ regs/IN0 }
+
+#-------------------------------------------------------------------
+

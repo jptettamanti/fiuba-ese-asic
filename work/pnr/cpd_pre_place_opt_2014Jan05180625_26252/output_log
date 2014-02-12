@@ -1,0 +1,325 @@
+Start CPD check: ::check_tlu_plus_files 
+
+Sanity check for TLU+ vs MW-Tech files:
+ max_tlu+: /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/star_rcxt/tluplus/saed90nm_1p9m_1t_Cmax.tluplus
+ min_tlu+: /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/star_rcxt/tluplus/saed90nm_1p9m_1t_Cmin.tluplus
+ mapping_file: /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/star_rcxt/saed90nm.map
+ max_emul_tlu+: **NONE**
+ min_emul_tlu+: **NONE**
+ MW design lib: mw_orca_lib
+
+--------- Sanity Check on TLUPlus Files -------------
+1. Checking the conducting layer names in ITF and mapping file ... 
+[ Passed! ]
+2. Checking the via layer names in ITF and mapping file ... 
+[ Passed! ]
+3. Checking the consistency of Min Width and Min Spacing between MW-tech and ITF ... 
+[ Passed! ]
+----------------- Check Ends ------------------
+1
+End CPD check: ::check_tlu_plus_files
+Start CPD check: ::get_placement_area 
+7.000 7.000 130.840 55.960
+End CPD check: ::get_placement_area
+Start CPD check: report_routing_metal_info 
+No ignored layers specified.
+Information: Report design vs library layers and preferred routing directions. (PNR-164)
+ 
+****************************************
+Report : Layers
+Design : cpu
+Version: H-2013.03-ICC-SP2
+Date   : Sun Jan  5 18:06:25 2014
+****************************************
+
+Layer Name                   Library             Design              Tool understands
+M1                           Horizontal          Horizontal          Horizontal
+M2                           Vertical            Vertical            Vertical
+M3                           Horizontal          Horizontal          Horizontal
+M4                           Vertical            Vertical            Vertical
+M5                           Horizontal          Horizontal          Horizontal
+M6                           Vertical            Vertical            Vertical
+M7                           Horizontal          Horizontal          Horizontal
+M8                           Vertical            Vertical            Vertical
+M9                           Horizontal          Horizontal          Horizontal
+
+Information: Report track info.  (PNR-165)
+****************************************
+Report track
+Design : cpu
+Version: H-2013.03-ICC-SP2
+Date   : Sun Jan  5 18:06:25 2014
+****************************************
+Layer          Direction     Start         Tracks    Pitch          Attr
+------------------------------------------------------------------------
+Attributes :
+         usr : User defined
+         def : DEF defined
+
+M1                 Y         0.280          196       0.320           
+M2                 Y         0.280          196       0.320           
+M2                 X         0.440          429       0.320           
+M1                 X         0.440          429       0.320           
+M3                 X         0.440          429       0.320           
+M3                 Y         0.600          97        0.640           
+M2                 Y         0.600          97        0.640           
+M4                 Y         0.600          97        0.640           
+M4                 X         0.760          214       0.640           
+M3                 X         0.760          214       0.640           
+M5                 X         0.760          214       0.640           
+M5                 Y         1.880          48        1.280           
+M4                 Y         1.880          48        1.280           
+M6                 Y         1.880          48        1.280           
+M6                 X         0.760          107       1.280           
+M5                 X         0.760          107       1.280           
+M7                 X         0.760          107       1.280           
+M7                 Y         1.880          24        2.560           
+M6                 Y         1.880          24        2.560           
+M8                 Y         1.880          24        2.560           
+M8                 X         3.320          35        3.840           
+M7                 X         3.320          35        3.840           
+M9                 X         3.320          35        3.840           
+M9                 Y         7.000          11        5.120           
+M8                 Y         7.000          11        5.120           
+1
+End CPD check: report_routing_metal_info
+Start CPD check: check_track_and_unit 
+
+End CPD check: check_track_and_unit
+Start CPD check: check_layer_direction 
+
+End CPD check: check_layer_direction
+Start CPD check: check_physical_only_ports 
+Warning: No port objects matched '*' (SEL-004)
+[]
+End CPD check: check_physical_only_ports
+Start CPD check: ::check_database 
+************************************************************
+CHECK_DATABASE RESULTS FOR CELL : cpu_floorplan.CEL
+************************************************************
+MWUHIER: Checking for hierarchical internal netlist and flat internal netlist consistency ... 
+MWUHIER: Done with checking hierarchical internal netlist and flat internal netlist consistency. 
+Information: MWUHIER: Number of errors = 0 (MW-348)
+End PG consistent checking.. PG_Pass
+Information: Performing CEL netlist consistency check. (MWDC-118)
+Information: CEL consistency check PASSED. (MWDC-119)
+
+Start UPF checking.
+No UPF infomation. Finish UPF checking.
+1
+End CPD check: ::check_database
+Start CPD check: report_taint -dump_errors 
+1
+End CPD check: report_taint -dump_errors
+Start CPD check: check_for_HFN_dont_touch_nets 
+
+End CPD check: check_for_HFN_dont_touch_nets
+Start CPD check: check_ilm -stage pre_place_opt 
+Information: No ILMs found
+1
+End CPD check: check_ilm -stage pre_place_opt
+Start CPD check: check_block_abstraction -stage pre_place_opt 
+Information: No blocks with abstraction information found
+1
+End CPD check: check_block_abstraction -stage pre_place_opt
+Start CPD check: check_placement_utilization_violation 
+ 
+****************************************
+  Report : Chip Summary
+  Design : cpu
+  Version: H-2013.03-ICC-SP2
+  Date   : Sun Jan  5 18:06:25 2014
+****************************************
+Std cell utilization: 86.11%  (5665/(6579-0))
+(Non-fixed + Fixed)
+Std cell utilization: 86.11%  (5665/(6579-0))
+(Non-fixed only)
+Chip area:            6579     sites, bbox (7.00 7.00 130.84 55.96) um
+Std cell area:        5665     sites, (non-fixed:5665   fixed:0)
+                      487      cells, (non-fixed:487    fixed:0)
+Macro cell area:      0        sites
+                      0        cells
+Placement blockages:  0        sites, (excluding fixed std cells)
+                      0        sites, (include fixed std cells & chimney area)
+                      0        sites, (complete p/g net blockages)
+Routing blockages:    0        sites, (partial p/g net blockages)
+                      0        sites, (routing blockages and signal pre-route)
+Lib cell count:       35 
+Avg. std cell width:  4.37 um 
+Site array:           unit     (width: 0.32 um, height: 2.88 um, rows: 17)
+Physical DB scale:    1000 db_unit = 1 um 
+
+ 
+****************************************
+  Report : pnet options
+  Design : cpu
+  Version: H-2013.03-ICC-SP2
+  Date   : Sun Jan  5 18:06:25 2014
+****************************************
+
+
+--------------------------------------------------------------------
+Layer      Blockage   Min_width   Min_height   Via_additive     Density
+--------------------------------------------------------------------
+M1         none          ---         ---       via additive      ---
+M2         none          ---         ---       via additive      ---
+M3         none          ---         ---       via additive      ---
+M4         none          ---         ---       via additive      ---
+M5         none          ---         ---       via additive      ---
+M6         none          ---         ---       via additive      ---
+M7         none          ---         ---       via additive      ---
+M8         none          ---         ---       via additive      ---
+M9         none          ---         ---       via additive      ---
+
+**********************************
+      Sub-Region Utilization      
+**********************************
+Number of regions with placement utilization 0 - 0.125 is 36 (100.00%)
+Number of regions with placement utilization 0.125 - 0.25 is 0 (0.00%)
+Number of regions with placement utilization 0.25 - 0.375 is 0 (0.00%)
+Number of regions with placement utilization 0.375 - 0.5 is 0 (0.00%)
+Number of regions with placement utilization 0.5 - 0.625 is 0 (0.00%)
+Number of regions with placement utilization 0.625 - 0.75 is 0 (0.00%)
+Number of regions with placement utilization 0.75 - 0.875 is 0 (0.00%)
+Number of regions with placement utilization 0.875 - 1 is 0 (0.00%)
+1
+
+1
+End CPD check: check_placement_utilization_violation
+Start CPD check: cpd_check_tie_connection 
+0
+End CPD check: cpd_check_tie_connection
+Start CPD check: cpd_check_cells_restrictions 
+0
+End CPD check: cpd_check_cells_restrictions
+Start CPD check: check_bound_utilization 
+Checking Bounds Utilization:
+Warning: Nothing implicitly matched '*' (SEL-003)
+0
+End CPD check: check_bound_utilization
+Start CPD check: check_bounds 
+Warning: Nothing implicitly matched '*' (SEL-003)
+
+End CPD check: check_bounds
+Start CPD check: check_va_utilization 
+Checking Voltage Area Utilization:
+Warning: No voltage_area objects matched '*' (SEL-004)
+
+End CPD check: check_va_utilization
+Start CPD check: placement_check 
+
+  Loading design 'cpu'
+
+
+
+
+
+  Total moveable cell area: 5220.9
+  Total fixed cell area: 0.0
+  Total physical cell area: 5220.9
+  Core area: (7000 7000 130840 55960)
+false
+End CPD check: placement_check
+Start CPD check: report_fp_placement 
+Reference Point: Lower Left-hand corner of Core Base Array
+Number of plan group pins = 0
+  0 blocks freed
+  0 bytes freed
+*********************************************
+Report     : Virtual Flat Placement
+Design     : cpu_floorplan
+Version    : H-2013.03-ICC-SP2
+Date       : Sun Jan  5 18:06:25 2014
+*********************************************
+
+Total wirelength: 106021.79
+Number of 100x100 tracks cell density regions: 3
+Number of low (< 10%) cell density regions: 8 (2.667%)
+Number of high (> 200%) cell density regions: 0 (0.000%)
+Maximum cell density: 0.00% (at 32767 406691456 0 79)
+Checking hard macro to hard macro overlaps...
+Number of hard macro to hard macro overlaps: 0
+Checking hard macro to std cell overlaps...
+Number of hard macro to std cell overlaps: 0
+Checking plan group to plan group overlaps...
+Number of plan group to plan group overlaps: 0
+Number of TL cells overlapping PG: 0
+  Top Level: cell alu/U73 is not inside core
+  Top Level: cell alu/U77 is not inside core
+  Top Level: cell alu/U90 is not inside core
+  Top Level: cell alu/U99 is not inside core
+  Top Level: cell mcu/U3 is not inside core
+  Further messages suppressed ...
+Number of cells violating core area: 487
+Total number of cells violating plan group or core area: 487
+1
+End CPD check: report_fp_placement
+Start CPD check: ::check_physical_constraints 
+
+  Loading design 'cpu'
+
+
+ Physical Library: /home/lse_dci01/Ejercicios/tp final/backend/dgen/pnr/mw_orca_lib
+
+ Routing layer : M1    width: 140    pitch: 320   space: 140
+
+ Routing Layer : M1 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M2    width: 160    pitch: 320   space: 160
+
+ Routing Layer : M2 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M3    width: 160    pitch: 640   space: 160
+
+ Routing Layer : M3 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M4    width: 160    pitch: 640   space: 160
+
+ Routing Layer : M4 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M5    width: 160    pitch: 1280   space: 160
+
+ Routing Layer : M5 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M6    width: 160    pitch: 1280   space: 160
+
+ Routing Layer : M6 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M7    width: 160    pitch: 2560   space: 160
+
+ Routing Layer : M7 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M8    width: 160    pitch: 3840   space: 160
+
+ Routing Layer : M8 Resistance : 0.076 Capacitance : 0.000194
+
+ Routing layer : M9    width: 450    pitch: 5120   space: 450
+
+ Routing Layer : M9 Resistance : 0.076 Capacitance : 0.000194
+
+
+ Physical Library: /opt/pdks/SAED_EDK90nm/Digital_Standard_cell_Library/process/astro/fram/saed90nm
+
+
+Total Bounds:0 Group Bounds:0 Move Bounds:0
+[begin initializing data for legality checker]
+Initializing Data Structure ...
+  Reading technology information ...
+    Technology table contains 9 routable metal layers
+    This is considered as a 9-metal-layer design
+    Reading library information from DB ...
+  Reading misc information ...
+    array <unit> has 0 vertical and 17 horizontal rows
+    8 pre-routes for placement blockage/checking
+    16 pre-routes for map congestion calculation
+  Checking information read in ...
+    design style = Horizontal masters, Horizontal rows
+  Preprocessing design ...
+    splitting rows by natural obstacles ...
+[end initializing data for legality checker]
+
+The maximum cell width in library is 11.200 um (e.g. 35 sites)
+
+There are no narrow placement areas less than 35 sites
+1
+End CPD check: ::check_physical_constraints
